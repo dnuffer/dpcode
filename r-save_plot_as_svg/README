@@ -1,0 +1,2 @@
+save the plot of y = x^3 as graph.svg in svg format
+source("setup.r") to get x and y

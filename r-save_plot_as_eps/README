@@ -1,0 +1,2 @@
+save the plot of y = x^3 as graph.eps in eps format
+source("setup.r") to get plot

@@ -1,0 +1,1 @@
+plot y = x ^ 3 from [-3, 3]

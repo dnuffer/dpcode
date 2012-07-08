@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'benchmark'
+
+raise "exercise name missing" unless ARGV.size == 1
+
+exercise = ARGV[0]
+
+raise "exercise (#{exercise}) directory does not exist" unless Dir.exists?(exercise)
+
+#TODO
+#git clean -fxd
+#git checkout master
+
+class Numeric
+  def duration
+    secs  = self.to_int
+    mins  = secs / 60
+    hours = mins / 60
+    days  = hours / 24
+
+    if days > 0
+      "#{days} days and #{hours % 24} hours"
+    elsif hours > 0
+      "#{hours}:#{mins % 60}:#{secs % 60}"
+    elsif mins > 0
+      "#{mins}:#{secs % 60}"
+    elsif secs >= 0
+      "#{secs} seconds"
+    end
+  end
+end
+
+Dir.chdir(exercise) do
+  FileUtils.cp 'README', '/dev/stdout'
+  elapsed_seconds = Benchmark.realtime do
+    unless system './work'; raise "failed running #{exercise}/work"; end
+  end
+  puts "Took #{elapsed_seconds.duration}"
+end
+

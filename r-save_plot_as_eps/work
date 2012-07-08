@@ -1,0 +1,4 @@
+#!/bin/sh
+R --interactive --vanilla --quiet
+display graph.eps
+rm graph.eps
