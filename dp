@@ -35,7 +35,13 @@ end
 Dir.chdir(exercise) do
   FileUtils.cp 'README', '/dev/stdout'
   elapsed_seconds = Benchmark.realtime do
-    unless system './work'; raise "failed running #{exercise}/work"; end
+    if File.exists? './Makefile'
+      raise "failed running make edit" unless system 'make edit'
+      raise "failed running make check" unless system 'make check'
+      raise "failed running make clean" unless system 'make clean'
+    else
+      raise "failed running ./work" unless system './work'
+    end
   end
   puts "Took #{elapsed_seconds.duration}"
 end
