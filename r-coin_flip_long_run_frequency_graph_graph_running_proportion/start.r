@@ -14,10 +14,12 @@ runprop = r / n
 ##################################################
 #
 # Graph the running proportion:
-# x axis label: "Flip Number"
-# x range 1-N, log scale
-# y axis label: "Proportion Heads"
+# type is "overplotted (circles on lines)
+# x axis log scale
+# x range 1-N
 # y range 0-1
+# x axis label: "Flip Number"
+# y axis label: "Proportion Heads"
 # main label:   "Running Proportion of Heads"
 # axis, labels, and titles should all be magnified by 1.5x
 #

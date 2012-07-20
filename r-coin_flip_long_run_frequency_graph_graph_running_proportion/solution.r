@@ -14,17 +14,24 @@ runprop = r / n
 ##################################################
 #
 # Graph the running proportion:
-# x axis label: "Flip Number"
-# x range 1-N, log scale
-# y axis label: "Proportion Heads"
+# type is "overplotted (circles on lines)
+# x axis log scale
+# x range 1-N
 # y range 0-1
+# x axis label: "Flip Number"
+# y axis label: "Proportion Heads"
 # main label:   "Running Proportion of Heads"
 # axis, labels, and titles should all be magnified by 1.5x
 #
-plot( n , runprop , type="o" , log="x" ,
-	  xlim=c(1,N) , ylim=c(0.0,1.0) , cex.axis=1.5 ,
-	  xlab="Flip Number" , ylab="Proportion Heads" , cex.lab=1.5 ,
-	  main="Running Proportion of Heads" , cex.main=1.5 )
+plot(n, runprop, 
+	type="o", 
+	log="x",
+	xlim=c(1,N), 
+	ylim=c(0.0, 1.0), 
+	xlab="Flip Number", 
+	ylab="Proportion Heads", 
+	main="Running Proportion of Heads", 
+	cex.axis = 1.5, cex.lab = 1.5, cex.main = 1.5)
 
 
 # Plot a dotted horizontal line at y=.5, just as a reference line:
