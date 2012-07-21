@@ -10,6 +10,8 @@ flipsequence = sample( x=c(0,1) , prob=c(.5,.5) , size=N , replace=TRUE )
 #
 # TODO: Compute the running proportion of heads
 #
+r = 
+n = 
 runprop = 
 
 
