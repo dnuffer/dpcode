@@ -36,8 +36,14 @@ Dir.chdir(exercise) do
   FileUtils.cp 'README', '/dev/stdout'
   elapsed_seconds = Benchmark.realtime do
     if File.exists? './Makefile'
-      raise "failed running make edit" unless system 'make edit'
-      raise "failed running make check" unless system 'make check'
+      begin
+        raise "failed running make edit" unless system 'make edit'
+        passed_make_check = system 'make check'
+        if !passed_make_check
+          puts "Failed make check! Press enter to try again"
+          $stdin.gets
+        end
+      end until passed_make_check
       raise "failed running make clean" unless system 'make clean'
     else
       raise "failed running ./work" unless system './work'
