@@ -8,7 +8,7 @@ N = 500	# Specify the total number of flips, denoted N.
 #
 # TODO: generate N samples representing coin flips
 #
-flipsequence = sample( x=c(0,1) , prob=c(.5,.5) , size=N , replace=TRUE )
+flipsequence = sample(x=c(0,1), size=N, replace=TRUE, prob=c(0.5,0.5))
 
 # Compute the running proportion of heads:
 r = cumsum( flipsequence ) # The function "cumsum" is built in to R.
