@@ -22,14 +22,19 @@ lines( c(1,N) , c(.5,.5) , lty=3 )
 
 ##################################################
 #
-# TODO: Display first 10 flips
+# TODO: Display first 10 flips: "Flip Sequence = HHTHTHHTTT..."
 # Display the beginning of the flip sequence. These string and character
 # manipulations may seem mysterious, but you can de-mystify by unpacking
 # the commands starting with the innermost parentheses or brackets and
 # moving to the outermost.
-flipletters = paste( c("T","H")[ flipsequence[ 1:10 ] + 1 ] , collapse="" )
-displaystring = paste( "Flip Sequence = " , flipletters , "..." , sep="" )
-text( 5 , .9 , displaystring , adj=c(0,1) , cex=1.3 )
+#
+# the text should be:
+#   at position 5, .9
+#   adjusted by 1 on the y axis
+#   scaled by 1.3
+flipletters = paste(c("T", "H")[flipsequence[1:10] + 1], collapse="")
+displaystring = paste("Flip Sequence = ", flipletters, "...", sep="")
+text(5, .9, displaystring, adj=c(0,1), cex=1.3)
 
 
 # Display the relative frequency at the end of the sequence.

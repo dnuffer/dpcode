@@ -22,11 +22,19 @@ lines( c(1,N) , c(.5,.5) , lty=3 )
 
 ##################################################
 #
-# TODO: Display first 10 flips
+# TODO: Display first 10 flips: "Flip Sequence = HHTHTHHTTT..."
 # Display the beginning of the flip sequence. These string and character
 # manipulations may seem mysterious, but you can de-mystify by unpacking
 # the commands starting with the innermost parentheses or brackets and
 # moving to the outermost.
+#
+# the text should be:
+#   at position 5, .9
+#   adjusted by 1 on the y axis
+#   scaled by 1.3
+flipletters = 
+displaystring =
+text(
 
 
 # Display the relative frequency at the end of the sequence.
