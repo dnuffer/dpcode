@@ -3,7 +3,7 @@ run:
 	evince Rplots.pdf
 
 edit:
-	cp start.r scratch.r
+	if ! [ -e scratch.r ]; then cp start.r scratch.r; fi
 	$${EDITOR:-vim} scratch.r
 
 check:
