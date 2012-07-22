@@ -40,8 +40,9 @@ Dir.chdir(exercise) do
         raise "failed running make edit" unless system 'make edit'
         passed_make_check = system 'make check'
         if !passed_make_check
-          puts "Failed make check! Press enter to try again"
-          $stdin.gets
+          puts "Failed make check! Try again?"
+          ans=$stdin.gets
+          break if ans.downcase[0] == ?n
         end
       end until passed_make_check
       raise "failed running make clean" unless system 'make clean'
