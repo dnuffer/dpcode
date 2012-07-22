@@ -29,6 +29,6 @@ text( 5 , .9 , displaystring , adj=c(0,1) , cex=1.3 )
 
 ##################################################
 #
-# TODO: "End Proportion =" + frequency, 1.3 magnification, at x=N, y=.3, right justified
+# TODO: at x=N, y=.3, "End Proportion =" + frequency, right justified, 1.3 magnification
 # Display the relative frequency at the end of the sequence.
 text( N, .3, paste( "End Proportion =", runprop[N]), adj=c(1,0), cex=1.3)
