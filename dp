@@ -23,9 +23,9 @@ class Numeric
     if days > 0
       "#{days} days and #{hours % 24} hours"
     elsif hours > 0
-      "#{hours}:#{mins % 60}:#{secs % 60}"
+      "%d:%0.2d:%0.2d" % [hours, mins % 60, secs % 60]
     elsif mins > 0
-      "#{mins}:#{secs % 60}"
+      "%d:%0.2d" % [mins, secs % 60]
     elsif secs >= 0
       "#{secs} seconds"
     end
