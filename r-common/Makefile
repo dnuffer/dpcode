@@ -10,4 +10,4 @@ check:
 	diff --ignore-all-space solution.r scratch.r 
 
 clean:
-	rm scratch.r Rplots.pdf
+	rm -f scratch.r Rplots.pdf
