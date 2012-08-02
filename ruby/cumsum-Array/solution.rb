@@ -4,7 +4,7 @@ require "test/unit/assertions"
 module Enumerable
   # Returns a Array whose elements are the cumulative sums of the enum
   def cumsum
-    inject([]) { |memo, obj| memo.push(obj + (memo.length > 0 ? memo.last : 0)) }
+    inject([]) { |memo, x| memo.push( (memo.last || 0) + x ) }
   end
 end
 
