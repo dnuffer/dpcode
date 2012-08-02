@@ -10,3 +10,6 @@
 *.lai
 *.la
 *.a
+
+scratch.r
+scratch.rb
