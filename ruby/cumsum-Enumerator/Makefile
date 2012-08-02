@@ -9,4 +9,4 @@ check:
 	ruby scratch.rb
 
 clean:
-	rm -f scratch.r
+	rm -f scratch.rb
