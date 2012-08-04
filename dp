@@ -33,7 +33,13 @@ class Numeric
 end
 
 Dir.chdir(exercise) do
-  FileUtils.cp 'README', '/dev/stdout'
+
+  if File.exists? "README"
+    FileUtils.cp "README", "/dev/stdout"
+    puts "Press enter to start"
+    $stdin.gets
+  end
+
   elapsed_seconds = Benchmark.realtime do
     if File.exists? './Makefile'
       raise "failed running make clean" unless system 'make clean'
