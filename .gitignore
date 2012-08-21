@@ -14,3 +14,6 @@
 scratch.r
 scratch.rb
 Rplots.pdf
+
+# rubymine ide dir
+.idea
