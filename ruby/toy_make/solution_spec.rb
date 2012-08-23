@@ -113,6 +113,14 @@ target3: t3d1
         File.stub(:mtime).with("dependency").and_return Time.new(2011)
         Make.need_to_build(["dependency"], "target").should == false
       end
+
+      it "returns true if target is newer than any dependency" do
+        File.stub(:mtime).with("target").and_return Time.new(2012)
+        File.stub(:mtime).with("dependency1").and_return Time.new(2013)
+        File.stub(:mtime).with("dependency2").and_return Time.new(2013)
+        File.stub(:mtime).with("dependency3").and_return Time.new(2011)
+        Make.need_to_build(["dependency1", "dependency2", "dependency3"], "target").should == true
+      end
     end
   end
 
@@ -169,9 +177,17 @@ target3: t3d1
 
       describe "build_target" do
         it "executes commands to satisfy target" do
-          Make.should_receive(:system).with("command1").once.and_return(true)
-          Make.should_receive(:system).with("command2").once.and_return(true)
+          Make.should_receive(:system).with("command1").ordered.once.and_return(true)
+          Make.should_receive(:system).with("command2").ordered.once.and_return(true)
           Make.build_target(rules_hash, target)
+        end
+
+        pending "somehow the state is messed up and this tests works fine by itself but won't play nice with others" do
+          it "raises StandardError if command fails" do
+            Make.should_receive(:system).with("command1").once.and_return(false)
+            Make.should_not_receive(:system).with("command2")
+            lambda { Make.build_target(rules_hash, target) }.should raise_error(StandardError)
+          end
         end
       end
     end
@@ -219,6 +235,7 @@ target3: t3d1
         end
       end
     end
+    #TODO: Add a test about command failure
   end
 end
 
