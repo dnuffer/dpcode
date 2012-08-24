@@ -207,8 +207,8 @@ target3: t3d1
 
       describe "build_target" do
         it "executes commands to satisfy target" do
-          Make.should_receive(:system).with("command1").once.and_return(true)
-          Make.should_receive(:system).with("command2").once.and_return(true)
+          Make.should_receive(:system).with("command2").ordered.once.and_return(true)
+          Make.should_receive(:system).with("command1").ordered.once.and_return(true)
           Make.build_target(rules_hash, target1)
         end
       end
