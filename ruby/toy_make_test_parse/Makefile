@@ -5,7 +5,7 @@ edit:
 	$${EDITOR:-vim} scratch_spec.rb
 
 check:
-	rspec *_spec.rb
+	rspec scratch_spec.rb
 
 clean:
 	rm -f scratch_spec.rb
