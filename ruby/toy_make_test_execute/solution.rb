@@ -39,7 +39,8 @@ module Make
 
   def self.need_to_build(dependencies, target)
     return true unless File.exist? target
-    return dependencies.any? { |dependency| File.mtime(dependency) >= File.mtime(target) }
+    target_mtime = File.mtime(target)
+    return dependencies.any? { |dependency| File.mtime(dependency) >= target_mtime }
   end
 
   # takes an ast of a makefile, target to build (nil means first), and executes commands in the correct order
