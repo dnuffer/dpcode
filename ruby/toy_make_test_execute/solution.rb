@@ -63,7 +63,7 @@ module Make
     goal[:built] = true
 
     goal[:prerequisites].each do |dep|
-      build_target(rules_hash, rules_hash[dep])
+      build_target(rules_hash, rules_hash[dep]) if rules_hash[dep]
     end
 
     # execute commands
