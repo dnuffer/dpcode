@@ -10,7 +10,6 @@ True
 False
 """
 
-def has_unique_characters(s):
 
 if __name__ == '__main__':
     import doctest
