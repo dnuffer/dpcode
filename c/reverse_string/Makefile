@@ -7,7 +7,7 @@ scratch: scratch.$(EXT)
 	g++ -o scratch scratch.$(EXT)
 
 edit:
-	if ! [ -e scratch.$(EXT) ]; then echo > scratch.$(EXT); fi
+	if ! [ -e scratch.$(EXT) ]; then cp start.$(EXT) scratch.$(EXT); fi
 	$${EDITOR:-vim} scratch.$(EXT)
 
 check: scratch

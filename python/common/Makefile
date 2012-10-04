@@ -1,12 +1,13 @@
+EXT=py
 run:
-	python scratch.py
+	python scratch.$(EXT)
 
 edit:
-	if ! [ -e scratch.py ]; then cp start.py scratch.py; fi
-	$${EDITOR:-vim} scratch.py
+	if ! [ -e scratch.$(EXT) ]; then cp start.$(EXT) scratch.$(EXT); fi
+	$${EDITOR:-vim} scratch.$(EXT)
 
 check:
-	python scratch.py
+	python scratch.$(EXT)
 
 clean:
-	rm -f scratch.py
+	rm -f scratch.$(EXT)
