@@ -16,5 +16,7 @@ True
 # TODO: Write are_permutations that determines if one string is a permutation of another
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+	import doctest
+	if doctest.testmod().failed > 0:
+		import sys
+		sys.exit(1)

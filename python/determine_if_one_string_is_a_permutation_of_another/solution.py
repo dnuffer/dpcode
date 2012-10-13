@@ -14,8 +14,10 @@ True
 """
 
 def are_permutations(s1, s2):
-    return set(s1) == set(s2)
+	return set(s1) == set(s2)
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+	import doctest
+	if doctest.testmod().failed > 0:
+		import sys
+		sys.exit(1)

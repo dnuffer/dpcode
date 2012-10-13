@@ -35,4 +35,6 @@ def compress(s):
 
 if __name__ == '__main__':
 	import doctest
-	doctest.testmod()
+	if doctest.testmod().failed > 0:
+		import sys
+		sys.exit(1)
