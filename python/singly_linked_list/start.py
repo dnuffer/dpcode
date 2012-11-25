@@ -14,18 +14,6 @@ True
 """
 
 # TODO: Implement a singly-linked list with next, data, and append()
-class singly_linked_list:
-  def __init__(self):
-    self.data = None
-    self.next = None
-
-  def append(self, data):
-    cur = self
-    while cur.next != None:
-      cur = cur.next
-    cur.next = singly_linked_list()
-    cur.next.data = data
-    
 			
 
 if __name__ == '__main__':
