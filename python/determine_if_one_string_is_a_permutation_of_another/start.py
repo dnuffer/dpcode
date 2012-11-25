@@ -11,6 +11,10 @@ True
 True
 >>> are_permutations("aaa", "aaa")
 True
+>>> are_permutations("aaa", "aaaa")
+False
+>>> are_permutations("aab", "abb")
+False
 """
 
 # TODO: Write are_permutations that determines if one string is a permutation of another
