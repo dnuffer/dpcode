@@ -72,6 +72,21 @@ class singly_linked_list:
 
     return head
 
+  def __str__(self):
+    node = self
+    result = '['
+
+    while node != None:
+      result += str(node.data)
+      if node.next != None:
+        result += ' -> '
+
+      node = node.next
+
+    result += ']'
+    return result
+      
+
 if __name__ == '__main__':
 	import doctest
 	if doctest.testmod().failed > 0:
