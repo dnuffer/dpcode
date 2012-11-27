@@ -23,7 +23,7 @@
 """
 
 import sys
-sys.path.append('../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_delete')
 
 from solution import singly_linked_list
 

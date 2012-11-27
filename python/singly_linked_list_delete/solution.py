@@ -72,19 +72,15 @@ class singly_linked_list:
 
     return head
 
-  def __str__(self):
+  def __iter__(self):
     node = self
-    result = '['
-
     while node != None:
-      result += str(node.data)
-      if node.next != None:
-        result += ' -> '
-
+      yield node
       node = node.next
+    return
 
-    result += ']'
-    return result
+  def __str__(self):
+    return '[%s]' % ' -> '.join([str(node.data) for node in self])
       
 
 if __name__ == '__main__':
