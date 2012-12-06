@@ -11,6 +11,10 @@
 >>> sll2 = singly_linked_list([5, 9, 2, 4])
 >>> print add_lists(sll1, sll2)
 [2 -> 1 -> 9 -> 4]
+>>> sll1 = singly_linked_list([7, 1, 6])
+>>> sll2 = singly_linked_list([5, 9, 6])
+>>> print add_lists(sll1, sll2)
+[2 -> 1 -> 3 -> 1]
 """
 
 import sys
@@ -50,6 +54,9 @@ def add_lists(l1, l2):
       node1 = node1.next
     if node2 != None:
       node2 = node2.next
+
+  if carry > 0:
+    answer, answer_tail = append(answer, answer_tail, carry)
 
   return answer
 
