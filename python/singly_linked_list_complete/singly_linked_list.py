@@ -22,15 +22,22 @@ class singly_linked_list:
     >>> print l.append("a")
     [0 -> None -> a]
     """
-    if self.tail:
-      self.tail.next_node = singly_linked_list_node()
-      self.tail = self.tail.next_node
-    else:
-      self.head = self.tail = singly_linked_list_node()
-
-    self.tail.data = data
-    return self
+    return self.append_node(singly_linked_list_node(data))
     
+  def append_node(self, node):
+    """
+    >>> l1=singly_linked_list([1,2])
+    >>> l2=singly_linked_list([3,4])
+    >>> print l1.append_node(l2.head)
+    [1 -> 2 -> 3 -> 4]
+    """
+    if self.tail:
+      self.tail.next_node = node
+      self.tail = node
+    else:
+      self.head = self.tail = node
+    return self
+
   def delete(self, data):
     """
     >>> l=singly_linked_list([10, 20])
