@@ -26,41 +26,28 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 #TODO: Write code to partition a linked list around a value x, such that all
 # nodes less than x come before all nodes greater than or equal to x.
-def partition(sll, value):
-  low = None
-  low_head = None
-  high = None
-  high_head = None
-  node = sll
-  while node != None:
-    next = node.next
-    node.next = None
-    if node.data < value:
-      if low:
-        low.next = node
-        low = low.next
-      else:
-        low_head = low = node
+def partition(sll, x):
+  upper = singly_linked_list()
+  lower = singly_linked_list()
+  node = sll.head
+  while node:
+    next_node = node.next_node
+    node.next_node = None
+    if node.data < x:
+      lower.append_node(node)
     else:
-      if high:
-        high.next = node
-        high = high.next
-      else:
-        high_head = high = node
+      upper.append_node(node)
+    node = next_node
 
-    node = next
-
-  if low:
-    low.next = high_head
-    return low_head
-  else:
-    return high_head
+  lower.append_node(upper.head)
+  return lower
+      
 
 if __name__ == '__main__':
   import doctest

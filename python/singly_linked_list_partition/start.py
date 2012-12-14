@@ -26,9 +26,9 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 #TODO: Write code to partition a linked list around a value x, such that all
 # nodes less than x come before all nodes greater than or equal to x.
