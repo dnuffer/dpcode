@@ -23,21 +23,24 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 def remove_duplicates(sll):
   seen_data = set()
-  node = sll
+  node = sll.head
   prev = None
-  while node != None:
+  while node:
     if node.data in seen_data:
-      prev.next = node.next
+      prev.next_node = node.next_node
+      if sll.tail == node:
+        sll.tail = prev
     else:
       seen_data.add(node.data)
       prev = node
-    node = node.next
+    node = node.next_node
+
   return sll
   
 
