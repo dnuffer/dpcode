@@ -38,6 +38,40 @@ class singly_linked_list:
       self.head = self.tail = node
     return self
 
+  def insert(self, position, data):
+    """
+    >>> l1 = singly_linked_list()
+    >>> print l1.insert(0, 'begin')
+    [begin]
+    >>> print l1.insert(1, 'second')
+    [begin -> second]
+    >>> print l1.insert(0, 'before begin')
+    [before begin -> begin -> second]
+    >>> print l1.append('new end')
+    [before begin -> begin -> second -> new end]
+    """
+    if position == 0 and not self.tail:
+      self.append(data)
+    else:
+      node = self.head
+      prev = None
+      while node and position > 0:
+        prev = node
+        node = node.next_node
+        position -= 1
+
+      if prev:
+        prev.next_node = singly_linked_list_node(data)
+        prev.next_node.next_node = node
+        if prev == self.tail:
+          self.tail = prev.next_node
+      else:
+        old_head = self.head
+        self.head = singly_linked_list_node(data)
+        self.head.next_node = old_head
+    
+    return self
+
   def delete(self, data):
     """
     >>> l=singly_linked_list([10, 20])
