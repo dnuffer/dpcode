@@ -1,4 +1,12 @@
 """
+>>> sll1 = singly_linked_list([1])
+>>> sll2 = singly_linked_list([2])
+>>> print add_lists(sll1, sll2)
+[3]
+>>> sll1 = singly_linked_list([1, 2])
+>>> sll2 = singly_linked_list([3, 4])
+>>> print add_lists(sll1, sll2)
+[4 -> 6]
 >>> sll1 = singly_linked_list([6, 1, 7])
 >>> sll2 = singly_linked_list([2, 9, 5])
 >>> print add_lists(sll1, sll2)
