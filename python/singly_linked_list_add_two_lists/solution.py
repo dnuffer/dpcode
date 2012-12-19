@@ -18,47 +18,35 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
-
-from solution import singly_linked_list
+sys.path.insert(0, '../singly_linked_list_complete')
+from singly_linked_list import singly_linked_list
 
 # TODO: You have two numbers represented by a linked list, where each node
 # contains a single digit. The digits are stored in reverse order, such that
 # 1's digit is at the head of the list. Write a function that adds the two
 # numbers and returns the sum as a linked list
-
-def append(head, tail, data):
-  if tail == None:
-    head = tail = singly_linked_list([data])
-  else:
-    tail.next = singly_linked_list([data])
-    tail = tail.next
-  return (head, tail)
-  
 def add_lists(l1, l2):
+  result = singly_linked_list()
+  node1 = l1.head
+  node2 = l2.head
   carry = 0
-  node1 = l1
-  node2 = l2
-  answer = None
-  answer_tail = None
-  while node1 != None or node2 != None:
-    if node1 != None and node2 != None:
-      answer, answer_tail = append(answer, answer_tail, (node1.data + node2.data) % 10 + carry)
-      carry = (node1.data + node2.data) / 10
+  while node1 or node2:
+    if node1 and node2:
+      result.append((node1.data + node2.data + carry) % 10)
+      carry = (node1.data + node2.data + carry) / 10
     else:
       node = node1 or node2
-      answer, answer_tail = append(answer, answer_tail, node.data % 10 + carry)
-      carry = 0
-      
-    if node1 != None:
-      node1 = node1.next
-    if node2 != None:
-      node2 = node2.next
+      result.append((node.data + carry) % 10)
+      carry = (node.data + carry) / 10
 
-  if carry > 0:
-    answer, answer_tail = append(answer, answer_tail, carry)
-
-  return answer
+    if node1:
+      node1 = node1.next_node
+    if node2:
+      node2 = node2.next_node
+  
+  if carry:
+    result.append(carry)
+  return result
 
 if __name__ == '__main__':
   import doctest
