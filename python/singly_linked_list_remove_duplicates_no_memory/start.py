@@ -23,9 +23,9 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 # TODO: implement remove_duplicates which is passed a singly_linked_list, 
 # removes the duplicate nodes without using any additional memory and then returns the list
