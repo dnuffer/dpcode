@@ -1,0 +1,5 @@
+Add stack outputs: 
+  InstanceId - InstanceId of the newly created EC2 instance
+  AZ - Availability Zone of the newly created EC2 instance
+  PublicIP - Public IP address of the newly created EC2 instance
+  PrivateIP - Private IP address of the newly created EC2 instance
