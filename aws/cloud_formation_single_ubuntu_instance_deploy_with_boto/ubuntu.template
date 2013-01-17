@@ -1,0 +1,13 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Resources" : {
+    "Ec2Instance" : {
+      "Type" : "AWS::EC2::Instance",
+      "Properties" : {
+        "ImageId" : "ami-16fd7026",
+        "InstanceType" : "t1.micro"
+      }
+    }
+  }
+}
