@@ -14,8 +14,8 @@
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
-from solution import singly_linked_list
+sys.path.insert(0, '../singly_linked_list_complete')
+from singly_linked_list import singly_linked_list
 
 # TODO: You have two numbers represented by a linked list, where each node
 # contains a single digit. The digits are stored in reverse order, such that

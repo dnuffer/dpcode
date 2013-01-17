@@ -11,10 +11,6 @@
 >>> sll2 = singly_linked_list([5, 9, 2, 4])
 >>> print add_lists(sll1, sll2)
 [2 -> 1 -> 9 -> 4]
->>> sll1 = singly_linked_list([7, 1, 6])
->>> sll2 = singly_linked_list([5, 9, 6])
->>> print add_lists(sll1, sll2)
-[2 -> 1 -> 3 -> 1]
 """
 
 import sys
@@ -27,6 +23,7 @@ from singly_linked_list import singly_linked_list
 # numbers and returns the sum as a linked list
 def add_lists(l1, l2):
   result = singly_linked_list()
+
   node1 = l1.head
   node2 = l2.head
   carry = 0
@@ -35,17 +32,17 @@ def add_lists(l1, l2):
       result.append((node1.data + node2.data + carry) % 10)
       carry = (node1.data + node2.data + carry) / 10
     else:
-      node = node1 or node2
+      node = node1 if node1 else node2
       result.append((node.data + carry) % 10)
       carry = (node.data + carry) / 10
 
-    if node1:
-      node1 = node1.next_node
-    if node2:
-      node2 = node2.next_node
-  
-  if carry:
-    result.append(carry)
+    node1 = node1.next_node if node1 else None
+    node2 = node2.next_node if node2 else None
+
+
+  if carry > 0:
+    result.insert(0, carry)
+
   return result
 
 if __name__ == '__main__':
