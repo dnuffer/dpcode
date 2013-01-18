@@ -1,0 +1,1 @@
+Add a Route53 host record to the HostedZone parameter and return it as the HostName output
