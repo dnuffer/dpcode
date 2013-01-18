@@ -1,13 +1,13 @@
 EXT=py
 run:
-	python scratch.$(EXT)
+	. ../../../dpcode-python-env/bin/activate; python scratch.$(EXT)
 
 edit:
 	if ! [ -e scratch.$(EXT) ]; then cp start.$(EXT) scratch.$(EXT); fi
-	$${EDITOR:-vim} scratch.$(EXT)
+	. ../../../dpcode-python-env/bin/activate; $${EDITOR:-vim} scratch.$(EXT)
 
 check:
-	python scratch.$(EXT)
+	. ../../../dpcode-python-env/bin/activate; python scratch.$(EXT)
 
 clean:
 	rm -f scratch.$(EXT)
