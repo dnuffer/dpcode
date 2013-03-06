@@ -10,6 +10,57 @@
 the result
 """
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # TODO: create a CloudFormation stack in us-west-2 named dpcode-boto with the template in ubuntu.template
 
 
