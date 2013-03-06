@@ -18,7 +18,7 @@
   "Parameters" : {
     "HostedZone" : {
       "Type" : "String",
-      "Description" : "The DNS name of an existing Amazon Route 53 hosted zone"
+      "Description" : ""
     }
   },
 
@@ -40,12 +40,12 @@
     "HostRecord" : {
       "Type" : "AWS::Route53::RecordSet",
       "Properties" : {
+        "Comment" : "",
         "HostedZoneName" : { "Fn::Join" : [ "", [{"Ref" : "HostedZone"}, "." ]]},
-        "Comment" : "DNS name for my instance.",
         "Name" : { "Fn::Join" : [ "", [{"Ref" : "EC2Instance"}, ".", {"Ref" : "AWS::Region"}, ".", {"Ref" : "HostedZone"}, "."]]},
-        "Type" : "A",
+        "ResourceRecords" : [ { "Fn::GetAtt" : [ "EC2Instance", "PublicIp" ] } ],
         "TTL" : "900",
-        "ResourceRecords" : [ { "Fn::GetAtt" : [ "EC2Instance", "PublicIp" ] } ]
+        "Type" : "A"
       }
     }
   },
@@ -68,7 +68,7 @@
       "Value" : { "Fn::GetAtt" : [ "EC2Instance", "PrivateIp" ] }
     },
     "HostName" : {
-      "Description" : "DNS hostname of the newly created EC2 instance",
+      "Description" : "",
       "Value" : { "Ref" : "HostRecord" }
     }
   }

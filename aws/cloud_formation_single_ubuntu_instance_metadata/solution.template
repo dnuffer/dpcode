@@ -17,7 +17,7 @@
     "Ec2Instance" : {
       "Type" : "AWS::EC2::Instance",
       "Metadata" : {
-        "Comment" : "This metadata is availabile via the cfn-describe-stack-resource command line tool, the DescribeStackResource API call or the cfn-get-metadata helper",
+        "Comment" : "",
         "MyAMI" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "AMI" ]},
         "MyRegion"  : { "Ref" : "AWS::Region" },
         "MyStack"  : { "Ref" : "AWS::StackName" }

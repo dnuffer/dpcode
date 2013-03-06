@@ -24,8 +24,8 @@
       },
       "Properties" : {
         "ImageId" : { "Fn::FindInMap" : [ "RegionMap", { "Ref" : "AWS::Region" }, "AMI" ]},
-        "UserData" : { "Fn::Base64" : "80" },
-        "InstanceType" : "t1.micro"
+        "InstanceType" : "t1.micro",
+        "UserData" : { "Fn::Base64" : "80" }
       }
     }
   }
