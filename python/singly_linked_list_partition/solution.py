@@ -46,7 +46,8 @@ def partition(sll, x):
     node = next_node
 
   lower.append_node(upper.head)
-  return lower
+  sll.head = lower.head
+  return sll
       
 
 if __name__ == '__main__':
