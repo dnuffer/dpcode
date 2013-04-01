@@ -8,10 +8,13 @@
 ...         mock_event.resource_type = 'AWS::CloudFormation::Stack'
 ...         mock_event.resource_status = 'CREATE_COMPLETE'
 ...         instance.describe_stack_events.return_value = [mock_event]
+...         mock_stack = Mock(boto.cloudformation.stack.Stack)
+...         mock_stack.outputs = [('output', 'output')]
+...         instance.describe_stacks.return_value = [mock_stack]
 ...         result = deploy()
 ...         mock.assert_called_with('us-west-2')
 ...         instance.create_stack.assert_called_once_with('dpcode-boto', template_body=open('ubuntu.template', 'r').read(), parameters=[('HostedZone', 'dan.test')])
-...         print result
+...         assert(result == [('output', 'output')])
 Stack deployed. Waiting
 """
 
@@ -39,21 +42,12 @@ def deploy():
     if any((e.resource_type == 'AWS::CloudFormation::Stack' and e.resource_status == 'CREATE_COMPLETE' for e in events)):
       stack_is_deploying = False
 
-    pprint.pprint(events)
-
     time.sleep(3)
-
+  
   return conn.describe_stacks(stack_id)[0].outputs
 
 
 if __name__ == '__main__':
-  #try:
-  #  outputs = deploy()
-  #  pprint.pprint(outputs)
-  #except boto.exception.BotoServerError, e:
-  #  print e.error_message
-  #sys.exit(1)
-
   import doctest
   result = doctest.testmod()
   if result.failed > 0:
