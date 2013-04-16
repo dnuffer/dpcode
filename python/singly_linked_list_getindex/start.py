@@ -29,9 +29,9 @@ IndexError: list index out of range
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 # TODO: Write singly_linked_list __getitem__
 

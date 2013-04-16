@@ -29,24 +29,24 @@ IndexError: list index out of range
 """
 
 import sys
-sys.path.insert(0, '../singly_linked_list_delete')
+sys.path.insert(0, '../singly_linked_list_complete')
 
-from solution import singly_linked_list
+from singly_linked_list import singly_linked_list
 
 def sll__getitem__(self, k):
   if k >= 0:
-    node = self
+    node = self.head
     while node != None and k > 0:
-      node = node.next
+      node = node.next_node
       k -= 1
     if k > 0:
       raise IndexError("list index out of range")
     return node.data
   else:
     length = 0
-    node = self
+    node = self.head
     while node != None:
-      node = node.next
+      node = node.next_node
       length += 1
     if k * -1 > length:
       raise IndexError("list index out of range")
