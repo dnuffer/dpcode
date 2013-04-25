@@ -3,9 +3,7 @@ require 'date'
 require 'tzinfo'
 
 
-def datetime_difference_in_seconds(first, second)
-  return second.to_time.to_i - first.to_time.to_i
-end
+# TODO write datetime_difference_in_seconds
 
 print "What is your birthday? "
 birthday = gets.strip
@@ -14,11 +12,8 @@ birthday = gets.strip
 print "What Time Zone were you born in? "
 time_zone = gets.strip
 
-tz = TZInfo::Timezone.get(time_zone)
+# TODO calculate the difference between now and the given birthday
 
-birth_time = tz.local_to_utc(Time.parse(birthday).utc)
-print "Using birthday as: #{birth_time}\n"
-utc_now = Time.now.utc
 
 print "You are #{datetime_difference_in_seconds(birth_time, utc_now)} seconds old\n"
 
