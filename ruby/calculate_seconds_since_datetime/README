@@ -1,1 +1,1 @@
-Write Enumerable.cumsum to return an Array whose elements are the cumulative sums of the enum
+Write a program that prompts for a birthday+time and timezone and prints out how many seconds old the person is. Take local timezone into account
