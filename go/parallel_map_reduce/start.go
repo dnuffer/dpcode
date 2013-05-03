@@ -2,32 +2,43 @@ package main
 
 import "fmt"
 
-// TODO: implement MapReduce
-
-func counter(in_str interface{}, output chan interface{}) {
-	output <- len(in_str.(string))
+type Pair struct {
+	Key interface{}
+	Value interface{}
 }
 
-func summer(input chan interface{}, output chan interface{}) {
+// TODO: implement MapReduce
+
+
+func counter(in_str Pair) Pair {
+	return Pair{in_str.Key, len(in_str.Key.(string))}
+}
+
+func summer(input chan Pair, output chan interface{}) {
 	total := 0
 	for count := range input {
-		total += count.(int)
+		total += count.Value.(int)
 	}
 	output <- total
 }
 
-func output_strings() chan interface{} {
-	output := make(chan interface{})
+func output_strings() chan Pair {
+	output := make(chan Pair)
 	go func() {
-		output <- "hello"
-		output <- "world"
+		for i := 0; i < 1; i++ {
+			output <- Pair{"hello", nil}
+			output <- Pair{"world", nil}
+			output <- Pair{"Dan", nil}
+			output <- Pair{"is", nil}
+			output <- Pair{"awesome", nil}
+		}
 		close(output)
 	}()
 	return output
 }
 
 func TestMapReduce() {
-	fmt.Println(MapReduce(counter, summer, output_strings(), 20))
+	fmt.Println(MapReduce(counter, summer, output_strings(), 4))
 }
 
 func main() {
