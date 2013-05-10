@@ -3,12 +3,10 @@ package main
 import "fmt"
 
 func min(x int, y int) int {
-	if x < y {
+	if x <= y {
 		return x
-	} else {
-		return y
 	}
-	return x
+	return y
 }
 
 func LevenshteinDistance(source string, target string) int {
@@ -18,12 +16,10 @@ func LevenshteinDistance(source string, target string) int {
 		return len(source)
 	} else if source[0] == target[0] {
 		return LevenshteinDistance(source[1:], target[1:])
-	} else {
-		return 1 + min(LevenshteinDistance(source, target[1:]),
-				min(LevenshteinDistance(source[1:], target[1:]),
-				    LevenshteinDistance(source[1:], target)))
 	}
-	return 0
+	return 1 + min(LevenshteinDistance(source, target[1:]),
+			min(LevenshteinDistance(source[1:], target[1:]),
+			    LevenshteinDistance(source[1:], target)))
 }
 
 func TestLevenshteinDistance() {
