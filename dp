@@ -40,6 +40,8 @@ Dir.chdir(exercise) do
     $stdin.gets
   end
 
+  trap('INT', 'IGNORE')
+
   elapsed_seconds = Benchmark.realtime do
     if File.exists? './Makefile'
       raise "failed running make clean" unless system 'make clean'
