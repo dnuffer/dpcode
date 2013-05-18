@@ -14,7 +14,7 @@ type Pair struct {
 func MapReduce(mapper func(in_data Pair) Pair,
 		reducer func(input chan Pair, output chan interface{}),
 		input chan Pair,
-		pool_size int) []interface{} {
+		pool_size int) (result []interface{}) {
 	// written to by mapper goroutines, read by reducer
 	reducer_input := make(chan Pair, pool_size)
 
@@ -49,11 +49,12 @@ func MapReduce(mapper func(in_data Pair) Pair,
 			done <- struct{}{}
 		}()
 	}
-	result := []interface{}{}
+
 	for item := range reducer_output {
 		result = append(result, item)
 	}
-	return result
+
+	return
 }
 
 func counter(in_str Pair) Pair {

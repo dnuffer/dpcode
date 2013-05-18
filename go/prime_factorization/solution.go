@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-func PrimeFactorization(n int) []int {
+func PrimeFactorization(n int) (results []int) {
 	if n == 1 {
 		return []int{}
 	}
-	results := []int{}
+	
 	for i := 2; i < n; i++ {
 		if n % i == 0 {
 			results = append(results, i)
@@ -15,7 +15,7 @@ func PrimeFactorization(n int) []int {
 		}
 	}
 	results = append(results, n)
-	return results
+	return
 }
 
 func equal(a, b []int) bool {
