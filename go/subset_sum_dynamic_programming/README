@@ -1,0 +1,7 @@
+Write maximum_weighted_subset
+Input:
+    weights: A list of non-negative integral weights.
+    W: A non-negative integral weight bound.
+Output:
+    The maximum weight of any valid subset of weights.
+    A valid subset is one with total weight at most W.
