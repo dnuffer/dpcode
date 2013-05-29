@@ -16,7 +16,7 @@ time_zone = gets.strip
 
 tz = TZInfo::Timezone.get(time_zone)
 
-birth_time = tz.local_to_utc(Time.parse(birthday).utc)
+birth_time = tz.local_to_utc(DateTime.parse(birthday))
 print "Using birthday as: #{birth_time}\n"
 utc_now = Time.now.utc
 
