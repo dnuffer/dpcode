@@ -1,13 +1,12 @@
 package main
 
 import "fmt"
-import "math"
 
 func BinarySearch(a []int, x int) int {
 	low := 0
 	high := len(a)
 	for low < high {
-		mid := int(math.Floor(float64(low + high) / 2.0))
+		mid := (low + high) / 2
 
 		if x == a[mid] && (mid == 0 || x != a[mid - 1]) {
 			return mid
