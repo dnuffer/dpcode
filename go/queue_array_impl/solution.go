@@ -26,7 +26,7 @@ func (queue *Queue) PopFront() (result int) {
 	result = queue.buffer[queue.begin]
 	queue.length--
 	queue.begin++
-	if queue.begin > len(queue.buffer) {
+	if queue.begin >= len(queue.buffer) {
 		queue.begin = 0
 	}
 	return
