@@ -7,7 +7,7 @@ raise "exercise name missing" unless ARGV.size == 1
 
 exercise = ARGV[0]
 
-raise "exercise (#{exercise}) directory does not exist" unless Dir.exists?(exercise)
+raise "exercise (#{exercise}) directory does not exist" unless File.exists?(exercise)
 
 #TODO
 #git clean -fxd
