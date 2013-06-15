@@ -2,7 +2,7 @@ run: scratch
 	./scratch
 
 scratch: scratch.cpp
-	g++ -o scratch scratch.cpp
+	g++ -g -o scratch scratch.cpp
 
 edit:
 	if ! [ -e scratch.cpp ]; then cp start.cpp scratch.cpp; fi
