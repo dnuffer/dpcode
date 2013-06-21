@@ -11,12 +11,14 @@ module Make
   describe "need_to_build" do
     it "returns true if target does not exist" do
       File.stub(:exist?).with("target").and_return false
+      File.stub(:exists?).with("target").and_return false
       Make.need_to_build(["dependency"], "target").should == true
     end
 
     context "target exists" do
       before do
         File.stub(:exist?).with("target").and_return true
+        File.stub(:exists?).with("target").and_return true
       end
 
       
@@ -64,6 +66,7 @@ module Make
     context "target doesn't exist" do
       before do
         File.stub(:exist?).with("target").and_return false
+        File.stub(:exists?).with("target").and_return false
       end
 
       describe "build_target" do
@@ -77,6 +80,7 @@ module Make
     context "target does exist" do
       before do
         File.stub(:exist?).with("target").and_return true
+        File.stub(:exists?).with("target").and_return true
         File.stub(:mtime).with("target").and_return Time.new(2012)
       end
 
@@ -97,6 +101,7 @@ module Make
     context "target doesn't exist" do
       before do
         File.stub(:exist?).with("target").and_return false
+        File.stub(:exists?).with("target").and_return false
       end
 
       describe "build_target" do
@@ -126,7 +131,9 @@ module Make
     context "target doesn't exist" do
       before do
         File.stub(:exist?).with("target1").and_return false
+        File.stub(:exists?).with("target1").and_return false
         File.stub(:exist?).with("target2").and_return false
+        File.stub(:exists?).with("target2").and_return false
       end
 
       describe "build_target" do
@@ -148,7 +155,9 @@ module Make
     context "target doesn't exist" do
       before do
         File.stub(:exist?).with("target1").and_return false
+        File.stub(:exists?).with("target1").and_return false
         File.stub(:exist?).with("target2").and_return false
+        File.stub(:exists?).with("target2").and_return false
       end
 
       describe "build_target" do
