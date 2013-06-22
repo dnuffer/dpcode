@@ -3,7 +3,7 @@ run:
 	echo "test Variance" | octave -q
 
 edit:
-	if ! [ -e FunctionRSquared.m ]; then cp CategoryRSquared_start.m CategoryRSquared.m; fi
+	if ! [ -e FunctionRSquared.m ]; then cp FunctionRSquared_start.m FunctionRSquared.m; fi
 	if ! [ -e Variance.m ]; then cp Variance_start.m Variance.m; fi
 	$${EDITOR:-vim} Variance.m FunctionRSquared.m
 
