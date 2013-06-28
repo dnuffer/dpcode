@@ -15,18 +15,12 @@ class Queue
 			, m_begin(0)
 			, m_length(0)
 		{
-			m_buffer.resize(1);
 		}
 
 		void push_back(const T& data)
 		{
 			ensure_available(1);
-			size_type pos = m_begin + m_length;
-			if (pos >= m_buffer.size())
-			{
-				pos -= m_buffer.size();
-			}
-			m_buffer[pos] = data;
+			m_buffer[(m_begin + m_length) % m_buffer.size()] = data;
 			++m_length;
 		}
 
@@ -38,11 +32,7 @@ class Queue
 		void pop()
 		{
 			--m_length;
-			++m_begin;
-			if (m_begin >= m_buffer.size())
-			{
-				m_begin = 0;
-			}
+			m_begin = (m_begin + 1) % m_buffer.size();
 		}
 
 		bool empty() const
@@ -75,12 +65,13 @@ class Queue
 	private:
 		void ensure_available(size_type available)
 		{
+			using namespace std;
 			if (m_buffer.size() < m_length + available)
 			{
-				std::vector<T> new_buffer((m_length + available) * 3 / 2);
+				vector<T> new_buffer((m_length + available) * 2);
 				if (m_begin + m_length < m_buffer.size())
 				{
-					std::copy(m_buffer.begin() + m_begin, m_buffer.begin() + m_begin + m_length, new_buffer.begin());
+					move(m_buffer.begin() + m_begin, m_buffer.begin() + m_begin + m_length, new_buffer.begin());
 				}
 				else
 				{
@@ -89,10 +80,10 @@ class Queue
 					size_type p1len = m_buffer.size() - p1begin;
 					size_type p2begin = 0;
 					size_type p2len = m_buffer.size() - p1len;
-					// copy p1 to the start of new_buffer
-					std::copy(m_buffer.begin() + p1begin, m_buffer.begin() + p1begin + p1len, new_buffer.begin());
+					// move p1 to the start of new_buffer
+					move(m_buffer.begin() + p1begin, m_buffer.begin() + p1begin + p1len, new_buffer.begin());
 					// append p2 to new_buffer
-					std::copy(m_buffer.begin() + p2begin, m_buffer.begin() + p2begin + p2len, new_buffer.begin() + p1len);
+					move(m_buffer.begin() + p2begin, m_buffer.begin() + p2begin + p2len, new_buffer.begin() + p1len);
 				}
 				swap(m_buffer, new_buffer);
 				m_begin = 0;
