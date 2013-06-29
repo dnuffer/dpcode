@@ -7,8 +7,9 @@ edit:
 	$${EDITOR:-vim} scratch.$(EXT)
 
 check:
+	rm hello.txt
 	node scratch.$(EXT) && \
 	echo "Hello, world" | diff - hello.txt
 
 clean:
-	rm -f scratch.$(EXT)
+	rm -f scratch.$(EXT) hello.txt
