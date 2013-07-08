@@ -1,7 +1,6 @@
 package main
 
 import "fmt"
-import "math"
 
 // TODO: Write BinarySearch which returns the lowest index i such that arr[i] == x, or -1 if x not in arr
 
