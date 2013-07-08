@@ -3,7 +3,7 @@ class DiscreteSamplerCondensedTableLookup
     @events_and_weights = events_and_weights
     normalize_weights
     gen_tables
-    puts "lens aa:#{@aa.size} bb:#{@bb.size} cc:#{@cc.size} dd:#{@dd.size} ee:#{@ee.size}"
+    #puts "lens aa:#{@aa.size} bb:#{@bb.size} cc:#{@cc.size} dd:#{@dd.size} ee:#{@ee.size}"
     #puts "aa:#{@aa.inspect} bb:#{@bb.inspect} cc:#{@cc.inspect} dd:#{@dd.inspect} ee:#{@ee.inspect}"
     #puts "@t1: #{@t1} @t2: #{@t2} @t3: #{@t3} @t4: #{@t4}"
   end
