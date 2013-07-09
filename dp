@@ -29,6 +29,12 @@ class Numeric
   end
 end
 
+# pick a language at random if a top-level exercise name is given
+if exercise.split('/').reject {|s| s == ''}.size == 1
+  ls = LangSelector.new(exercise)
+  exercise = File.join(exercise, ls.pick_lang)
+end
+
 Dir.chdir(exercise) do
 
   if File.exists? "README"
