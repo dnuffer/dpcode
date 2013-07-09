@@ -1,6 +1,6 @@
 run:
-	echo "test FunctionRSquared" | octave -q
-	echo "test Variance" | octave -q
+	octave -q --eval "test FunctionRSquared" | egrep "PASSES ([0-9]+) out of \1 tests"
+	octave -q --eval "test Variance" | egrep "PASSES ([0-9]+) out of \1 tests"
 
 edit:
 	if ! [ -e FunctionRSquared.m ]; then cp FunctionRSquared_start.m FunctionRSquared.m; fi
