@@ -1,5 +1,6 @@
 SRC_EXT=.cs
 BIN_EXT=.exe
+RUN_CMD=mono
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
