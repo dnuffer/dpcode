@@ -1,5 +1,5 @@
-SRC_EXT=.sh
-BIN_EXT=.sh
+SRC_EXT=.c
+BIN_EXT=
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))

@@ -1,14 +1,29 @@
-run:
-	@if [ -x ./run ]; then ./run; else ./scratch.$(EXT); fi
+run: scratch$(BIN_EXT)
+	@if [ -x ./run ]; then ./run; else ./scratch$(BIN_EXT); fi
 
-check:
-	@if [ -x ./check ]; then ./check; else ./scratch.$(EXT); fi
+check: scratch$(BIN_EXT)
+	@if [ -x ./check ]; then ./check; else ./scratch$(BIN_EXT); fi
 
-edit:
-	@if ! [ -e scratch.$(EXT) ]; then cp start.$(EXT) scratch.$(EXT); fi
-	@$${EDITOR:-vim} scratch.$(EXT)
+check-solution: solution$(BIN_EXT)
+	@if [ -x ./check-solution ]; then ./check-solution; else ./solution$(BIN_EXT); fi
+
+edit: scratch$(SRC_EXT)
+	@$${EDITOR:-vim} scratch$(SRC_EXT)
+
+scratch$(SRC_EXT):
+	@if ! [ -e scratch$(SRC_EXT) ]; then cp start$(SRC_EXT) scratch$(SRC_EXT); fi
 
 clean:
-	@rm -f scratch.$(EXT)
+	rm -f scratch$(BIN_EXT) scratch$(SRC_EXT) $(SOLUTION_CLEAN)
 
-.PHONY: check run edit clean
+ifneq ($(BIN_EXT), $(SRC_EXT))
+
+scratch$(BIN_EXT): scratch$(SRC_EXT)
+
+solution$(BIN_EXT): solution$(SRC_EXT)
+
+SOLUTION_CLEAN=solution$(BIN_EXT)
+
+endif
+
+.PHONY: run check check-solution edit clean 
