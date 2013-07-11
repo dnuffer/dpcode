@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+*.exe
 
 # Compiled Dynamic libraries
 *.so
@@ -20,6 +21,8 @@ scratch.c
 scratch.cpp
 scratch.go
 scratch.js
+scratch.cs
+scratch.sh
 Rplots.pdf
 
 # rubymine ide dir

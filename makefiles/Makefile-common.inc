@@ -1,8 +1,8 @@
 run: scratch$(BIN_EXT)
-	@if [ -x ./run ]; then ./run; else ./scratch$(BIN_EXT); fi
+	@if [ -x ./run ]; then ./run scratch$(BIN_EXT); else ./scratch$(BIN_EXT); fi
 
 check: scratch$(BIN_EXT)
-	@if [ -x ./check ]; then ./check; else ./scratch$(BIN_EXT); fi
+	@if [ -x ./check ]; then ./check scratch$(BIN_EXT); else ./scratch$(BIN_EXT); fi
 
 check-solution: solution$(BIN_EXT)
 	@if [ -x ./check-solution ]; then ./check-solution; else ./solution$(BIN_EXT); fi
