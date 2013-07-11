@@ -1,0 +1,15 @@
+SRC_EXT=.java
+BIN_EXT=.class
+
+# The purpose of this mess is to be able to say "$(RUN_CMD) ./scratch" and have it converted to "java scratch"
+RUN_CMD=run_with_java() { echo "$$1" | sed -n 's/\.\/\([a-z]*\).*/\1/p' | xargs java; }; run_with_java
+
+# Makefile code to find and load the common exercise rules
+MAKEFILE := $(lastword $(MAKEFILE_LIST))
+REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); else echo $(MAKEFILE); fi)
+SELF_DIR := $(dir $(REAL_MAKEFILE))
+
+include $(SELF_DIR)/Makefile-common.inc
+
+%.class : %.java
+	javac $<
