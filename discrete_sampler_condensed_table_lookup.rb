@@ -16,8 +16,9 @@ class DiscreteSamplerCondensedTableLookup
 
   def normalize_weights
     total = @events_and_weights.values.reduce { |memo, obj| memo + obj }
+    multiplier = (1<<30) / total
     @events_and_weights.each { |key, value|
-      @events_and_weights[key] = value * (1<<30) / total
+      @events_and_weights[key] = value * multiplier
       #puts "Normalized #{value} to #{@events_and_weights[key]}"
     }
 
