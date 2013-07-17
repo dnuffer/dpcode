@@ -1,0 +1,2 @@
+#!/bin/bash
+java -classpath . $(basename "$1" .class)

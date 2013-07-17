@@ -1,4 +1,5 @@
 #!/bin/bash
 set -x
-out=$(./scratch.sh)
+export PATH=.:$PATH
+out=$($*)
 [ "$out" = "Hello, world" ] || exit 1
