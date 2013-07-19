@@ -1,0 +1,10 @@
+SRC_EXT=.r
+BIN_EXT=.r
+RUN_CMD=R --vanilla --slave -f
+
+# Makefile code to find and load the common exercise rules
+MAKEFILE := $(lastword $(MAKEFILE_LIST))
+REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); else echo $(MAKEFILE); fi)
+SELF_DIR := $(dir $(REAL_MAKEFILE))
+
+include $(SELF_DIR)/Makefile-common.inc
