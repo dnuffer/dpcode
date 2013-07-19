@@ -59,6 +59,10 @@ class LangSelector
     @ds.sample
   end
 
+  def langs
+    @lang_dir_and_weights.keys
+  end
+
 end
 
 if __FILE__ == $0

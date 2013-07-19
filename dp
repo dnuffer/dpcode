@@ -4,9 +4,13 @@ require 'fileutils'
 require 'benchmark'
 require './lang_selector'
 
-raise "exercise name missing" unless ARGV.size == 1
+raise "exercise name missing" unless ARGV.size >= 1
 
 exercise = ARGV[0]
+reps = 1
+if ARGV.size == 2
+  reps = ARGV[1]
+end
 
 raise "exercise (#{exercise}) directory does not exist" unless File.exists?(exercise)
 
@@ -29,38 +33,51 @@ class Numeric
   end
 end
 
-# pick a language at random if a top-level exercise name is given
-if exercise.split('/').reject {|s| s == ''}.size == 1
-  ls = LangSelector.new(exercise)
-  exercise = File.join(exercise, ls.pick_lang)
-end
+def do_exercise(exercise)
+  Dir.chdir(exercise) do
 
-Dir.chdir(exercise) do
-
-  if File.exists? "README"
-    FileUtils.cp "README", "/dev/stdout"
-    puts "Press enter to start"
-    $stdin.gets
-  end
-
-  trap('INT', 'IGNORE')
-
-  elapsed_seconds = Benchmark.realtime do
-    if File.exists? './Makefile'
-      raise "failed running make clean" unless system 'make clean'
-      begin
-        raise "failed running make edit" unless system 'make edit'
-        passed_make_check = system 'make check'
-        if !passed_make_check
-          puts "Failed make check! Try again?"
-          ans=$stdin.gets
-          break if ans.downcase[0] == ?n
-        end
-      end until passed_make_check
-    else
-      raise "failed running ./work" unless system './work'
+    if File.exists? "README"
+      FileUtils.cp "README", "/dev/stdout"
+    elsif File.exists? "../README"
+      FileUtils.cp "../README", "/dev/stdout"
     end
+    puts "Press enter to start working on #{exercise}"
+    $stdin.gets
+
+    trap('INT', 'IGNORE')
+
+    elapsed_seconds = Benchmark.realtime do
+      if File.exists? './Makefile'
+        raise "failed running make clean" unless system 'make clean'
+        begin
+          raise "failed running make edit" unless system 'make edit'
+          passed_make_check = system 'make check'
+          if !passed_make_check
+            puts "Failed make check! Try again?"
+            ans=$stdin.gets
+            break if ans.downcase[0] == ?n
+          end
+        end until passed_make_check
+      else
+        raise "failed running ./work" unless system './work'
+      end
+    end
+    puts "Took #{elapsed_seconds.duration}"
   end
-  puts "Took #{elapsed_seconds.duration}"
 end
 
+if reps == "all"
+    ls = LangSelector.new(exercise)
+    ls.langs.each { |lang|
+      do_exercise(File.join(exercise, lang))
+    }
+elsif exercise.split('/').reject {|s| s == ''}.size == 1
+  # pick a language at random if a top-level exercise name is given
+  # reps defaults to 1
+  reps.to_i.times {
+      ls = LangSelector.new(exercise)
+      do_exercise(File.join(exercise, ls.pick_lang))
+  }
+else
+  do_exercise(exercise)
+end
