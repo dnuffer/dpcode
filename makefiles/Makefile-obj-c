@@ -7,3 +7,6 @@ REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); el
 SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
+
+% : %.m
+	gcc -o $@ $< `gnustep-config --objc-flags` `gnustep-config --base-libs`

@@ -1,17 +1,10 @@
-@interface Hello:NSObject
-- (void) say;
-@end
+#import <Foundation/Foundation.h>
 
-@implementation Hello
-- (void) say {
-   NSLog(@"Hello, world");
-}
-@end
- 
-int main(int argc, char *argv[])
+int main (int argc, const char * argv[])
 {
-    @autoreleasepool {;
-        [[Hello new] say];
-    }
-    return 0;
+        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+
+        printf("Hello, world\n");
+        [pool drain];
+        return 0;
 }
