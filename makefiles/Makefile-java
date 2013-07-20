@@ -1,7 +1,7 @@
 SRC_EXT=.java
 BIN_EXT=.class
 
-# The purpose of this mess is to be able to say "$(RUN_CMD) ./scratch" and have it converted to "java scratch"
+# The purpose of this mess is to be able to say "$(RUN_CMD) ./scratch.class" and have it converted to "java scratch"
 RUN_CMD=$(SELF_DIR)/run_with_java
 
 # Makefile code to find and load the common exercise rules
