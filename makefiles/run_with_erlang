@@ -1,0 +1,2 @@
+#!/bin/bash
+erl -noshell -s $(basename "$1" .beam) main -s init stop

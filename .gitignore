@@ -3,6 +3,8 @@
 *.lo
 *.o
 *.exe
+*.class
+*.beam
 
 # Compiled Dynamic libraries
 *.so
@@ -32,7 +34,6 @@ scratch.php
 Rplots.pdf
 
 solution
-solution.class
 
 # rubymine ide dir
 .idea

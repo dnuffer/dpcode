@@ -1,0 +1,16 @@
+SRC_EXT=.erl
+BIN_EXT=.beam
+
+# The purpose of this mess is to be able to say "$(RUN_CMD) ./scratch.beam" and have it converted to 
+# "erl -noshell -s scratch main -s init stop"
+RUN_CMD=$(SELF_DIR)/run_with_erlang
+
+# Makefile code to find and load the common exercise rules
+MAKEFILE := $(lastword $(MAKEFILE_LIST))
+REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); else echo $(MAKEFILE); fi)
+SELF_DIR := $(dir $(REAL_MAKEFILE))
+
+include $(SELF_DIR)/Makefile-common.inc
+
+%.beam : %.erl
+	erlc $<
