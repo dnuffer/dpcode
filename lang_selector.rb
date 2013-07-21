@@ -51,6 +51,7 @@ class LangSelector
         "perl"          => 1,
         "lisp"          => 1,
         "clojure"       => 1,
+        "lua"           => 1,
         "groovy"        => 1,
     }.delete_if { |k, v|
       !entries.include? k
