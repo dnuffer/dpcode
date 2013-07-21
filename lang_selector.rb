@@ -32,10 +32,10 @@ class LangSelector
     @lang_dir_and_weights =
     {
         "js"            => 6,
-        "go"            => 6,
+        "c++"           => 5,
+        "go"            => 4,
         "java"          => 4,
         "obj-c"         => 4,
-        "c++"           => 4,
         "ruby"          => 4,
         "php"           => 3,
         "python"        => 3,
@@ -44,7 +44,6 @@ class LangSelector
         "scala"         => 3,
         "coffeescript"  => 3,
         "c"             => 2,
-        "bash"          => 2,
         "bash"          => 2,
         "erlang"        => 2,
         "c#"            => 1,
