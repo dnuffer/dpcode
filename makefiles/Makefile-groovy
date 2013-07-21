@@ -1,0 +1,10 @@
+SRC_EXT=.groovy
+BIN_EXT=.groovy
+RUN_CMD=groovy
+
+# Makefile code to find and load the common exercise rules
+MAKEFILE := $(lastword $(MAKEFILE_LIST))
+REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); else echo $(MAKEFILE); fi)
+SELF_DIR := $(dir $(REAL_MAKEFILE))
+
+include $(SELF_DIR)/Makefile-common.inc
