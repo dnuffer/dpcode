@@ -1,0 +1,1 @@
+Read name from stdin, then print "Hello, {name}" on one line
