@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var outfile = 'first_100_primes.txt'
+var outfile = 'first_100_primes.txt';
 
 // TODO: write the first 100 primes to outfile, comma separated
 
