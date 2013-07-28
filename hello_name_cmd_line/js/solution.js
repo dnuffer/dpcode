@@ -1,13 +1,11 @@
 #!/usr/bin/env node
-var readline = require('readline');
+var myArgs = require('optimist').argv,
+    help = "--name <name>";
 
-var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+if ((myArgs.h) || (myArgs.help)) {
+  console.log(help);
+  process.exit(0);
+}
 
-rl.question("", function(answer) {
-  console.log("Hello, " + answer);
-
-  rl.close();
-});
+var name = myArgs.name
+console.log("Hello, " + name);

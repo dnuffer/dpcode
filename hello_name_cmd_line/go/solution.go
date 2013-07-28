@@ -1,13 +1,15 @@
 package main
 
 import "fmt"
+import "flag"
 
 func main() {
 	var name string
-	num, err := fmt.Scan(&name)
-	if num != 1 || err != nil {
-		fmt.Printf("No name given")
-	} else {
-		fmt.Printf("Hello, %s\n", name)
+	flag.StringVar(&name, "name", "", "set the name")
+	flag.Parse()
+	if name == "" {
+		panic("Name not specified")
 	}
+	fmt.Printf("Hello, %s\n", name)
 }
+
