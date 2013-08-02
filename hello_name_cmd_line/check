@@ -1,8 +1,45 @@
 #!/bin/bash
 set -x
+set -e
 export PATH=.:$PATH
+
+# --name
 out=$($* --name "Dan")
 [ "$out" = "Hello, Dan" ] || { printf "Failure\nExpected: Hello, Dan\nGot     : %s\n" "$out"; exit 1; }
-out=$($* --name "Jiro")
+
+# -n
+out=$($* -n "Jiro")
 [ "$out" = "Hello, Jiro" ] || { printf "Failure\nExpected: Hello, Jiro\nGot     : %s\n" "$out"; exit 1; }
+
+# invalid arg
+set +e
+out=$($* --foo 2>&1)
+rv=$?
+[ $rv -ne 0 ] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
+set -e
+
+# missing value
+set +e
+out=$($* --name 2>&1)
+rv=$?
+[ $rv -ne 0 ] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
+set -e
+
+# no args
+set +e
+out=$($* 2>&1)
+rv=$?
+[ $rv -ne 0 ] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
+set -e
+
+# --help
+out=$($* --help 2>&1)
+function check_usage()
+{
+	[[ "$out" =~ "-name" ]] || { printf "Failure\nExpected to find --name in\n%s" "$out"; exit 1; }
+	[[ "$out" =~ "-help" ]] || { printf "Failure\nExpected to find --help in\n%s" "$out"; exit 1; }
+	[[ "$out" =~ "-n" ]] || { printf "Failure\nExpected to find -n in\n%s" "$out"; exit 1; }
+}
+check_usage
+
 printf "Success!\n"

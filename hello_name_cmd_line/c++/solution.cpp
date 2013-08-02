@@ -11,9 +11,8 @@ int main(int argc, char** argv)
 
 	options_description desc("Allowed options");
 	desc.add_options()
-		("help", "produce help message")
-		("name", value<string>(&name), "set name")
-	;
+		("help", "print help")
+		("name,n", value<string>(&name), "set name");
 
 	variables_map vm;
 	try
@@ -26,7 +25,7 @@ int main(int argc, char** argv)
 		cerr << desc << endl;
 		return 1;
 	}
-	notify(vm);    
+	notify(vm);
 
 	if (vm.count("help"))
 	{
@@ -36,7 +35,7 @@ int main(int argc, char** argv)
 
 	if (vm.count("name") == 0)
 	{
-		cerr << "missing --name option" << endl;
+		cerr << "missing --name" << endl;
 		cerr << desc << endl;
 		return 1;
 	}

@@ -1,11 +1,28 @@
 #!/usr/bin/env node
-var myArgs = require('optimist').argv,
-    help = "--name <name>";
+var optimist = require('optimist')
+              .usage('Say Hi.\nUsage: $0')
+              .options('n', {
+                alias: 'name',
+                default: '',
+                describe: 'specify the name'
+              })
+              .options('h', {
+                alias: 'help',
+                describe: 'print the help'
+              })
 
-if ((myArgs.h) || (myArgs.help)) {
-  console.log(help);
+var myArgs = optimist.argv
+
+if (myArgs.h) {
+  console.log(optimist.help());
   process.exit(0);
 }
 
-var name = myArgs.name
+var name = myArgs.name;
+
+if (name == '' || name == true) {
+  console.error(optimist.help());
+  process.exit(1);
+}
+
 console.log("Hello, " + name);

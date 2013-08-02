@@ -1,1 +1,4 @@
-Get name from command line argument --name, then print "Hello, {name}" on one line
+Get name from command line argument --name/-n {name}, then print "Hello, {name}" on one line.
+Use the de facto standard command line parsing library for the language.
+If --help is specified, print usage to stdout.
+If anything else is specified, print usage to stderr and exit with 1.
