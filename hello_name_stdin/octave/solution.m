@@ -1,2 +1,2 @@
 name = scanf("%s");
-printf("Hello, %s", name);
+printf("Hello, %s\n", name);
