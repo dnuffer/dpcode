@@ -9,5 +9,8 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
 
+%.exe : %.csproj
+	mdtool build $<
+
 %.exe : %.cs
 	mcs $<
