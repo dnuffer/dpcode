@@ -30,7 +30,7 @@ public class Hello
 		}
 
 		if (show_help) {
-			Console.WriteLine("scratch [options]");
+			Console.WriteLine("Usage: scratch [options]");
 			p.WriteOptionDescriptions(Console.Out);
 			return 0;
 		}
