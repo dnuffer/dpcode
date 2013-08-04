@@ -1,21 +1,22 @@
 package main
 
+import "os"
 import "fmt"
 import "flag"
 
 func main() {
 	var name string
-	var help bool
-	flag.BoolVar(&help, "help", false, "help")
-	flag.StringVar(&name, "name", "", "set the name")
-	flag.StringVar(&name, "n", "", "set the name")
+	var show_help bool
+	flag.StringVar(&name, "name", "", "set name")
+	flag.StringVar(&name, "n", "", "set name")
+	flag.BoolVar(&show_help, "help", false, "show help")
 	flag.Parse()
-	if help {
+	if show_help {
 		flag.Usage()
 	} else if name == "" {
-		panic("Name not specified")
+		fmt.Fprintf(os.Stderr, "Name not specified")
+		os.Exit(1)
 	} else {
 		fmt.Printf("Hello, %s\n", name)
 	}
 }
-
