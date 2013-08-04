@@ -17,7 +17,7 @@ out=$($* --foo 2>&1)
 rv=$?
 [[ $rv -ne 0 ]] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
 [[ "$out" =~ "scratch: " ]] || { printf "Failure\nExpected to find ^scratch:  in\n%s" "$out"; exit 1; }
-[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
+[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find Try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
 set -e
 
 # missing value
@@ -26,7 +26,7 @@ out=$($* --name 2>&1)
 rv=$?
 [[ $rv -ne 0 ]] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
 [[ "$out" =~ "scratch: " ]] || { printf "Failure\nExpected to find ^scratch:  in\n%s" "$out"; exit 1; }
-[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
+[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find Try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
 set -e
 
 # no args
@@ -35,7 +35,7 @@ out=$($* 2>&1)
 rv=$?
 [[ $rv -ne 0 ]] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
 [[ "$out" =~ "scratch: " ]] || { printf "Failure\nExpected to find ^scratch:  in\n%s" "$out"; exit 1; }
-[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
+[[ "$out" =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find Try \`scratch --help' for more information. in\n%s" "$out"; exit 1; }
 set -e
 
 # --help
