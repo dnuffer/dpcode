@@ -10,28 +10,27 @@ int main(int argc, char** argv)
 
 	while (true)
 	{
-
 		int this_option_optind = optind ? optind : 1;
 		int option_index = 0;
 		static struct option long_options[] = {
-			{"name",    required_argument, 0, 'n'},
-			{"help",    no_argument,       0, 'h'},
-			{0,         0,                 0,  0 }
+			{"name", required_argument, 0, 'n'},
+			{"help", no_argument,       0, 'h'},
+			{0,      0,                 0,  0 }
 		};
 
 		int c = getopt_long(argc, argv, "n:h", long_options, &option_index);
 
 		if (c == -1)
-				break;
+			break;
 
 		switch (c) {
-		case 'n':
-			name = optarg;
-			break;
+			case 'n':
+				name = optarg;
+				break;
 
-		case 'h':
-			show_help = true;
-			break;
+			case 'h':
+				show_help = true;
+				break;
 		}
 	}
 
@@ -45,7 +44,7 @@ int main(int argc, char** argv)
 	if (show_help)
 	{
 		printf("Usage: scratch [options]\n");
-		printf("  -n, --name=NAME            the NAME of someone to greet.\n");
+		printf("  -n, --name=NAME            the NAME of someone to greet\n");
 		printf("  -h, --help                 show this message and exit\n");
 		exit(EXIT_SUCCESS);
 	}
