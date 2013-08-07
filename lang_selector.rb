@@ -27,34 +27,72 @@ require './discrete_sampler_condensed_table_lookup'
 # 20  22    MATLAB                0.563%  0.00%     B
 
 class LangSelector
+  def self.known_langs_and_weights
+      {
+          "js"            => 6,
+          "c++"           => 5,
+          "go"            => 4,
+          "java"          => 4,
+          "obj-c"         => 4,
+          "ruby"          => 4,
+          "php"           => 3,
+          "python"        => 3,
+          "octave"        => 3,
+          "R"             => 3,
+          "scala"         => 3,
+          "coffeescript"  => 3,
+          "c"             => 2,
+          "bash"          => 2,
+          "erlang"        => 2,
+          "c#"            => 1,
+          "perl"          => 1,
+          "lisp"          => 1,
+          "clojure"       => 1,
+          "lua"           => 1,
+          "groovy"        => 1,
+      }
+  end
+
+  def self.known_langs_and_extensions
+      {
+          "js"            => "js",
+          "c++"           => "cpp",
+          "go"            => "go",
+          "java"          => "java",
+          "obj-c"         => "m",
+          "ruby"          => "rb",
+          "php"           => "php",
+          "python"        => "py",
+          "octave"        => "m",
+          "R"             => "r",
+          "scala"         => "scala",
+          "coffeescript"  => "coffee",
+          "c"             => "c",
+          "bash"          => "sh",
+          "erlang"        => "erl",
+          "c#"            => "cs",
+          "perl"          => "pl",
+          "lisp"          => "lsp",
+          "clojure"       => "clj",
+          "lua"           => "lua",
+          "groovy"        => "groovy",
+      }
+  end
+
+  def self.known_langs
+    known_langs_and_weights.keys
+  end
+
   def initialize(top_dir)
     entries = Dir.entries(top_dir)
+    # any dirs not in the list get a weight of one
+    # merge in the list to set higher priorities
     @lang_dir_and_weights =
-    {
-        "js"            => 6,
-        "c++"           => 5,
-        "go"            => 4,
-        "java"          => 4,
-        "obj-c"         => 4,
-        "ruby"          => 4,
-        "php"           => 3,
-        "python"        => 3,
-        "octave"        => 3,
-        "R"             => 3,
-        "scala"         => 3,
-        "coffeescript"  => 3,
-        "c"             => 2,
-        "bash"          => 2,
-        "erlang"        => 2,
-        "c#"            => 1,
-        "perl"          => 1,
-        "lisp"          => 1,
-        "clojure"       => 1,
-        "lua"           => 1,
-        "groovy"        => 1,
-    }.delete_if { |k, v|
-      !entries.include? k
-    }
+      Hash[ entries.map { |entry| [entry, 1] } ].merge(
+        self.class.known_langs_and_weights
+      ).delete_if { |k, v|
+        !entries.include? k
+      }
 
     fail "No matching language directories found in #{top_dir}" if @lang_dir_and_weights.empty?
     @ds = DiscreteSamplerCondensedTableLookup.new(@lang_dir_and_weights)
