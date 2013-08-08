@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var optimist = require('optimist')
-              .usage('Say Hi.\nUsage: $0')
+              .usage('Say Hi.\nUsage: scratch [options]')
               .options('n', {
                 alias: 'name',
                 default: '',
@@ -21,6 +21,8 @@ if (myArgs.h) {
 var name = myArgs.name;
 
 if (name == '' || name == true) {
+  console.error("scratch: missing name");
+  console.error("Try `scratch --help' for more information.");
   console.error(optimist.help());
   process.exit(1);
 }
