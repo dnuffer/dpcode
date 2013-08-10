@@ -1,0 +1,19 @@
+C - https://code.google.com/p/test-dept/
+Java - https://code.google.com/p/powermock/ and https://code.google.com/p/mockito/
+C# - http://www.hibernatingrhinos.com/oss/rhino-mocks and https://code.google.com/p/moq/
+c++ - https://code.google.com/p/googlemock/
+ruby - rspec-mocks
+clojure - https://github.com/marick/Midje
+javascript - jasmine http://pivotal.github.io/jasmine/
+coffeescript - jasmine http://pivotal.github.io/jasmine/
+erlang - https://github.com/sheyll/erlymock or https://github.com/eproxus/meck
+go - https://github.com/stretchr/testify or https://code.google.com/p/gomock/source/browse/README.md
+groovy - http://groovy.codehaus.org/gapi/groovy/mock/interceptor/MockFor.html
+lisp - unnecessary
+lua - http://luaforge.net/projects/lemock/
+obj-c - http://ocmock.org/
+octave - not found
+perl - http://stackoverflow.com/questions/1519082/what-are-the-good-frameworks-for-unit-testing-and-mock-objects-in-perl, http://search.cpan.org/~chromatic/Test-MockObject-1.20120301/lib/Test/MockObject.pm
+php - https://github.com/padraic/mockery
+python - mock objects in library
+scala - http://scalamock.org/ or java (mockito/powermock)
