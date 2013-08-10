@@ -10,8 +10,8 @@ options = OptionParser.new do |o|
   o.banner  = "Usage: setup_new_exercise.rb [options]\n" +
               "  create directories and Makefile symlinks for a new exercise\n" +
               "  Valid langs:\n      #{LangSelector.known_langs.join("\n      ")}\n\n" 
-  o.on("-n", "--name NAME") { |name| $name = name }
-  o.on("-l", "--langs x,y,z", Array, "Comma separated list of langs.") do |list|
+  o.on("-n", "--name NAME", "Exercise name. Required.") { |name| $name = name }
+  o.on("-l", "--langs x,y,z", Array, "Comma separated list of langs. Defaults to all.") do |list|
     $langs += list
   end
   o.on("-t", "--todo TODO") { |todo| $todo = todo }
@@ -25,6 +25,8 @@ rescue OptionParser::ParseError => e
   puts options
   exit 1
 end
+
+fail "name was not specified" if $name == ""
 
 $langs = LangSelector.known_langs if $langs == []
 
