@@ -1,3 +1,5 @@
+#TODO: Add lint/style checks
+
 run: scratch$(BIN_EXT)
 	if [ -x ../run ]; then ../run "$(RUN_CMD) scratch$(BIN_EXT)"; else $(RUN_CMD) ./scratch$(BIN_EXT); fi
 
