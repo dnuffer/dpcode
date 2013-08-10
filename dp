@@ -76,7 +76,8 @@ elsif exercise.split('/').reject {|s| s == ''}.size == 1
   # reps defaults to 1
   reps.to_i.times {
       ls = LangSelector.new(exercise)
-      do_exercise(File.join(exercise, ls.pick_lang))
+      lang = ls.pick_lang
+      do_exercise(File.join(exercise, lang))
   }
 else
   do_exercise(exercise)

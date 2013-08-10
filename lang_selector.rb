@@ -84,7 +84,7 @@ class LangSelector
   end
 
   def initialize(top_dir)
-    entries = Dir.entries(top_dir)
+    entries = Dir.entries(top_dir).delete_if { |entry| entry.start_with?(".") || !File.directory?(entry) }
     # any dirs not in the list get a weight of one
     # merge in the list to set higher priorities
     @lang_dir_and_weights =
