@@ -4,7 +4,7 @@ C# - http://www.hibernatingrhinos.com/oss/rhino-mocks and https://code.google.co
 c++ - https://code.google.com/p/googlemock/
 ruby - rspec-mocks
 clojure - https://github.com/marick/Midje
-javascript - jasmine http://pivotal.github.io/jasmine/
+javascript - http://sinonjs.org/
 coffeescript - jasmine http://pivotal.github.io/jasmine/
 erlang - https://github.com/sheyll/erlymock or https://github.com/eproxus/meck
 go - https://github.com/stretchr/testify or https://code.google.com/p/gomock/source/browse/README.md

@@ -1,6 +1,6 @@
 C - https://github.com/bigwhite/cbehave
 ruby - rspec, cucumber http://cukes.info/
-javascript - jasmine http://pivotal.github.io/jasmine/
+javascript - jasmine http://pivotal.github.io/jasmine/ or mocha http://visionmedia.github.io/mocha/
 coffeescript - jasmine http://pivotal.github.io/jasmine/
 erlang - https://github.com/lucaspiller/espec or http://crowbar.github.io/docs/testing.html or https://github.com/ravolt/BravoDelta or https://github.com/rambocoder/cucumberl
 scala - http://etorreborre.github.io/specs2/
