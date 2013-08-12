@@ -83,17 +83,21 @@ class LangSelector
     known_langs_and_weights.keys
   end
 
-  def initialize(top_dir)
-    entries = Dir.entries(top_dir).delete_if { |entry| entry.start_with?(".") || !File.directory?(entry) }
-    # any dirs not in the list get a weight of one
-    # merge in the list to set higher priorities
-    @lang_dir_and_weights =
-      Hash[ entries.map { |entry| [entry, 1] } ].merge(
-        self.class.known_langs_and_weights
-      ).delete_if { |k, v|
-        !entries.include? k
-      }
+  def self.weight_for_exercise(exercise)
+    return known_langs_and_weights[exercise] if known_langs_and_weights.has_key? exercise
+    known_langs_and_weights.each { |lang, weight|
+      return weight if exercise.start_with? lang
+    }
+    return 1
+  end
 
+  def initialize(top_dir)
+    entries = Dir.entries(top_dir).delete_if { |entry| entry.start_with?(".") || !File.directory?("#{top_dir}/#{entry}") }
+    # Any dirs not in the list get a weight of one, or the weight of something that starts with
+    # a prefix, so js-foo will get the weight of js.
+    # Merge in the list to set higher priorities.
+    @lang_dir_and_weights =
+      Hash[ entries.map { |entry| [entry, LangSelector.weight_for_exercise(entry)] } ]
     fail "No matching language directories found in #{top_dir}" if @lang_dir_and_weights.empty?
     @ds = DiscreteSamplerCondensedTableLookup.new(@lang_dir_and_weights)
   end
