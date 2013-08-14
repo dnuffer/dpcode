@@ -15,7 +15,7 @@ function check_error()
 {
 	[[ $rv -ne 0 ]] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
 	[[ $out =~ (scratch|solution):  ]] || { printf "Failure\nExpected to find (scratch|solution):  in:\n%s" "$out"; exit 1; }
-	[[ $out =~ 'Try `'"scratch --help' for more information." ]] || { printf "Failure\nExpected to find Try \`scratch --help' for more information. in:\n%s" "$out"; exit 1; }
+	[[ $out =~ 'Try `'(scratch|solution)" --help' for more information." ]] || { printf "Failure\nExpected to find Try \`scratch --help' for more information. in:\n%s" "$out"; exit 1; }
 }
 
 # invalid arg
@@ -43,10 +43,10 @@ set -e
 out=$($* --help 2>&1)
 function check_usage()
 {
-	[[ $out =~ "Usage: scratch [options]" ]] || { printf "Failure\nExpected to find Usage: scratch [options] in:\n%s" "$out"; exit 1; }
-	[[ $out =~ "-name" ]] || { printf "Failure\nExpected to find -name in:\n%s" "$out"; exit 1; }
-	[[ $out =~ "-help" ]] || { printf "Failure\nExpected to find -help in:\n%s" "$out"; exit 1; }
-	[[ $out =~ "-n" ]] || { printf "Failure\nExpected to find -n in:\n%s" "$out"; exit 1; }
+	[[ $out =~ Usage:.*(scratch|solution)\ \[(options|OPTIONS)\] ]] || { printf "Failure\nExpected to find Usage: scratch [options] in:\n%s" "$out"; exit 1; }
+	[[ $out =~ -name ]] || { printf "Failure\nExpected to find -name in:\n%s" "$out"; exit 1; }
+	[[ $out =~ -help ]] || { printf "Failure\nExpected to find -help in:\n%s" "$out"; exit 1; }
+	[[ $out =~ -n ]] || { printf "Failure\nExpected to find -n in:\n%s" "$out"; exit 1; }
 }
 check_usage
 

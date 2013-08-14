@@ -1,22 +1,25 @@
 package main
 
-import "os"
 import "fmt"
-import "flag"
+import "github.com/jessevdk/go-flags"
+import "os"
 
 func main() {
-	var name string
-	var show_help bool
-	flag.StringVar(&name, "name", "", "set name")
-	flag.StringVar(&name, "n", "", "set name")
-	flag.BoolVar(&show_help, "help", false, "show help")
-	flag.Parse()
-	if show_help {
-		flag.Usage()
-	} else if name == "" {
-		fmt.Fprintf(os.Stderr, "Name not specified")
-		os.Exit(1)
-	} else {
-		fmt.Printf("Hello, %s\n", name)
+	var opts struct {
+		Name string `short:"n" long:"name" description:"Use NAME to greet someone"`
 	}
+
+	_, err := flags.Parse(&opts)
+
+	if err != nil && err.(*flags.Error).Type == flags.ErrHelp {
+		os.Exit(0)
+	}
+
+	if err != nil || opts.Name == "" {
+		fmt.Fprintf(os.Stderr, "scratch: Invalid command line arguments\n")
+		fmt.Fprintf(os.Stderr, "Try `scratch --help' for more information.\n")
+		os.Exit(1)
+	}
+
+	fmt.Printf("Hello, %s\n", opts.Name)
 }
