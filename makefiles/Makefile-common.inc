@@ -29,3 +29,5 @@ SOLUTION_CLEAN=solution$(BIN_EXT)
 endif
 
 .PHONY: run check check-solution edit clean 
+
+-include Makefile-local
