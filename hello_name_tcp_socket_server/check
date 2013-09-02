@@ -1,0 +1,8 @@
+#!/bin/bash
+#set -x
+export PATH=.:$PATH
+$* 9999 &
+out=$(echo Dan | nc localhost 9999)
+wait %1
+[ "$out" = "Hello, Dan" ] || { printf "Failure\nExpected: Hello, Dan\nGot     : %s\n" "$out"; exit 1; }
+printf "Success!\n"
