@@ -86,7 +86,7 @@ class LangSelector
   def self.weight_for_exercise(exercise)
     return known_langs_and_weights[exercise] if known_langs_and_weights.has_key? exercise
     known_langs_and_weights.each { |lang, weight|
-      return weight if exercise.start_with? lang
+      return weight if exercise.start_with? "#{lang}-"
     }
     return 1
   end
