@@ -38,7 +38,11 @@ func output_strings() chan Pair {
 }
 
 func TestMapReduce() {
-	fmt.Println(MapReduce(counter, summer, output_strings(), 4))
+	counts := MapReduce(counter, summer, output_strings(), 4)
+	fmt.Println(counts)
+	if counts[0].(int) != 22 {
+		panic(fmt.Sprintf("expected 22, got %d", counts[0].(int)))
+	}
 }
 
 func main() {
