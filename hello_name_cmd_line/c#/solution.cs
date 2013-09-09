@@ -1,10 +1,8 @@
 using System;
 using Mono.Options;
 
-public class Hello
-{
-	public static int Main(string[] args)
-	{
+public class Hello {
+	public static int Main(string[] args) {
 		bool show_help = false;
 		string name = "";
 
@@ -21,8 +19,7 @@ public class Hello
 			if (!show_help && name == "") {
 				throw new OptionException("missing name", "name");
 			}
-		}
-		catch (OptionException e) {
+		} catch (OptionException e) {
 			Console.Error.Write("scratch: ");
 			Console.Error.WriteLine(e.Message);
 			Console.Error.WriteLine("Try `scratch --help' for more information.");
