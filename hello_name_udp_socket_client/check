@@ -14,7 +14,7 @@ check_name()
 	wait %1
 	out=$(cat recv_output | grep -v "Ready")
 	[ "$out" = "Hello, ${name}" ] || { printf "Failure\nExpected: Hello, ${name}\nGot     : %s\n" "$out"; exit 1; }
-	rm recv_output
+	rm recv_output recv_error
 }
 check_name Dan
 check_name Jiro
