@@ -7,11 +7,13 @@ check_name()
 {
 	name=$1
 	python ../recv_udp.py > recv_output 2>recv_error &
+	trap 'kill %1' INT TERM EXIT
 	while [ "$(cat recv_output)" != "Ready" ] && [ -z "$(cat recv_error)" ]; do
 		:
 	done
 	$command $name
 	wait %1
+	trap - INT TERM EXIT
 	out=$(cat recv_output | grep -v "Ready")
 	[ "$out" = "Hello, ${name}" ] || { printf "Failure\nExpected: Hello, ${name}\nGot     : %s\n" "$out"; exit 1; }
 	rm recv_output recv_error
