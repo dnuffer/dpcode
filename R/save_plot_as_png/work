@@ -1,4 +1,4 @@
 #!/bin/sh
 R --interactive --vanilla --quiet
 display graph.png
-rm graph.png
+rm -f graph.png
