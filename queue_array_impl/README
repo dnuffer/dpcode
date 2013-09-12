@@ -1,0 +1,5 @@
+Implement a queue using an array for storage
+operations:
+  empty()
+  pushBack(item)
+  item popFront()
