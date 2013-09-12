@@ -33,17 +33,17 @@ $langs = LangSelector.known_langs if $langs == []
 puts "Exercise: #{$name}"
 puts "Langs: #{$langs.join(", ")}"
 
-fail "Directory for #{$name} already exists" if Dir.exists?($name)
-
-Dir.mkdir($name)
+Dir.mkdir($name) unless Dir.exists?($name)
 Dir.chdir($name) do
   $langs.each do |lang|
-    Dir.mkdir(lang)
-    File.symlink("../../makefiles/Makefile-#{lang}", "#{lang}/Makefile")
-    open("#{lang}/solution.#{LangSelector.known_langs_and_extensions[lang]}", "w") {}
-    open("#{lang}/start.#{LangSelector.known_langs_and_extensions[lang]}", "w") {}
+    unless Dir.exists?(lang)
+      Dir.mkdir(lang)
+      File.symlink("../../makefiles/Makefile-#{lang}", "#{lang}/Makefile")
+      open("#{lang}/solution.#{LangSelector.known_langs_and_extensions[lang]}", "w") {}
+      open("#{lang}/start.#{LangSelector.known_langs_and_extensions[lang]}", "w") {}
+    end
   end
-  open("README", "w") { |readme| readme.puts  }
+  open("README", "w") { |readme| readme.puts  } unless File.exists?("README")
   open("check", "w", 0775) { |check| check.puts <<EOS
 #!/bin/bash
 #set -x
@@ -52,5 +52,5 @@ out=$($*)
 [ "$out" = "Hello, world" ] || { printf "Failure\\nExpected: Hello, world\\nGot     : %s\\n" "$out"; exit 1; }
 printf "Success!\\n"
 EOS
-  }
+  } unless File.exists?("check")
 end
