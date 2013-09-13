@@ -111,14 +111,14 @@ func main() {
 			in++
 		}
 		x := queue.PopFront()
-		if (x != out) {
+		if x != out {
 			panic(fmt.Sprintf("queue.PopFront() != %d, got %d", out, x))
 		}
 		out++
 	}
 	for !queue.Empty() {
 		x := queue.PopFront()
-		if (x != out) {
+		if x != out {
 			panic(fmt.Sprintf("queue.PopFront() != %d, got %d", out, x))
 		}
 		out++
