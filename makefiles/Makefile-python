@@ -1,6 +1,6 @@
 SRC_EXT=.py
 BIN_EXT=.py
-RUN_CMD=python
+RUN_CMD=$(SELF_DIR)/../../dpcode-python-env/bin/python
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
