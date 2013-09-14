@@ -4,6 +4,7 @@
 *.o
 *.exe
 *.exe.mdb
+*.dll
 *.class
 *.beam
 
@@ -45,3 +46,5 @@ solution
 
 # rubymine ide dir
 .idea
+
+TestResult.xml
