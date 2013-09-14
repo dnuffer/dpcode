@@ -1,6 +1,7 @@
 SRC_EXT=.cs
 BIN_EXT=.exe
 RUN_CMD=mono
+MCS_FLAGS=
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
@@ -13,4 +14,4 @@ include $(SELF_DIR)/Makefile-common.inc
 	mdtool build $<
 
 %.exe : %.cs
-	mcs $<
+	gmcs $(MCS_FLAGS) $<
