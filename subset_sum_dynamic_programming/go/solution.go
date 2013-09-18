@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func max(x, y int) int {
 	if x > y {
 		return x
@@ -7,18 +9,33 @@ func max(x, y int) int {
 	return y
 }
 
-// TODO: write maximum_weighted_subset
-// Input:
-//   weights: A list of non-negative integral weights.
-//	  W: A non-negative integral weight bound.
-// Output:
-//   The maximum weight of any valid subset of weights.
-//   A valid subset is one with total weight at most W.
+func maximum_weighted_subset(weights []int, bound int) int {
+	if (len(weights) == 0) {
+		return 0
+	}
 
+	maxWeights := make([]int, bound + 1)
+
+	for w := weights[0]; w <= bound; w++ {
+		maxWeights[w] = weights[0]
+	}
+
+	for i := 1; i < len(weights); i++ {
+		for w := bound; w >= 0; w-- {
+			if weights[i] <= w {
+				include := weights[i] + maxWeights[w - weights[i]]
+				exclude := maxWeights[w]
+				maxWeights[w] = max(include, exclude)
+			}   
+		}   
+	}
+
+	return maxWeights[bound]
+}
 
 func assert_equal(x, y int) {
 	if x != y {
-		panic("not equal")
+		panic(fmt.Sprintf("not equal: %d and %d", x, y))
 	}
 }
 
@@ -35,4 +52,5 @@ func main() {
 	assert_equal(maximum_weighted_subset([]int {1, 2, 3}, 1), 1)
 	assert_equal(maximum_weighted_subset([]int {1, 2, 4}, 7), 7)
 	assert_equal(maximum_weighted_subset([]int {3, 5, 7}, 6), 5)
+	fmt.Printf("All tests passed!\n")
 }
