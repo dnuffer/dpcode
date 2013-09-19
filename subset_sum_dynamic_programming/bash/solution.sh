@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 maximum_weighted_subset()
 {
 	if [ ${#weights[*]} -eq 0 ]; then
@@ -19,10 +21,7 @@ maximum_weighted_subset()
 		for ((w = $bound; w >= 0; w--)); do
 			if (( ${weights[i]} <= w )); then
 				let include="${weights[i]} + ${maxWeights[w - ${weights[i]}]}"
-				let exlucde=${maxWeights[w]}
-				if (( include < exclude )); then
-					maxWeights[w]=$exclude
-				else
+				if (( include >= ${maxWeights[w]} )); then
 					maxWeights[w]=$include
 				fi
 			fi
@@ -59,6 +58,7 @@ main()
 	assert_maximum_weighted_subset "(1 2 3)" 1 1
 	assert_maximum_weighted_subset "(1 2 4)" 7 7
 	assert_maximum_weighted_subset "(3 5 7)" 6 5
+	echo "All tests passed!"
 }
 
 main "$@"

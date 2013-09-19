@@ -28,6 +28,7 @@ main()
 	assert_maximum_weighted_subset "(1 2 3)" 1 1
 	assert_maximum_weighted_subset "(1 2 4)" 7 7
 	assert_maximum_weighted_subset "(3 5 7)" 6 5
+	echo "All tests passed!"
 }
 
 main "$@"
