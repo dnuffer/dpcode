@@ -56,7 +56,13 @@ main()
 	assert_maximum_weighted_subset "(1 2 3)" 3 3
 	assert_maximum_weighted_subset "(1 2 3)" 2 2
 	assert_maximum_weighted_subset "(1 2 3)" 1 1
-	assert_maximum_weighted_subset "(1 2 4)" 7 7
+	assert_maximum_weighted_subset "(4 2 1)" 7 7
+	assert_maximum_weighted_subset "(4 2 1)" 6 6
+	assert_maximum_weighted_subset "(4 2 1)" 5 5
+	assert_maximum_weighted_subset "(4 2 1)" 4 4
+	assert_maximum_weighted_subset "(4 2 1)" 3 3
+	assert_maximum_weighted_subset "(4 2 1)" 2 2
+	assert_maximum_weighted_subset "(4 2 1)" 1 1
 	assert_maximum_weighted_subset "(3 5 7)" 6 5
 	echo "All tests passed!"
 }
