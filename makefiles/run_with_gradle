@@ -1,0 +1,4 @@
+#!/bin/bash
+class=$1
+shift
+gradle $(basename "$class" .class) "$@"
