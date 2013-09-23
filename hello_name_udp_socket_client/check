@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+set -u
 export PATH=.:$PATH
 command=$*
 
@@ -11,7 +12,7 @@ check_name()
 	while [ "$(cat recv_output)" != "Ready" ] && [ -z "$(cat recv_error)" ]; do
 		:
 	done
-	$command $name
+	$command $name || { printf "Failure\nCommand exit status: $?"; exit 1; }
 	wait %1
 	trap - INT TERM EXIT
 	out=$(cat recv_output | grep -v "Ready")
