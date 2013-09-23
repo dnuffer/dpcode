@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -x
+set -u
 export PATH=.:$PATH
-out=$($*)
-[ "$out" = "Hello, world" ] || { printf "Failure\nExpected: Hello, world\nGot     : %s\n" "$out"; exit 1; }
+$* || { echo "Failure: $?"; exit 1; }
 printf "Success!\n"
