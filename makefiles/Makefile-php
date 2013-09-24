@@ -6,5 +6,15 @@ RUN_CMD=php
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
 REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); else echo $(MAKEFILE); fi)
 SELF_DIR := $(dir $(REAL_MAKEFILE))
+TOOLS_DIR := $(SELF_DIR)/../tools
 
 include $(SELF_DIR)/Makefile-common.inc
+
+setup: composer.lock
+
+composer.lock: $(TOOLS_DIR)/composer.phar composer.json
+	php $(TOOLS_DIR)/composer.phar install
+	touch composer.lock
+
+$(TOOLS_DIR)/composer.phar:
+	cd $(TOOLS_DIR) && curl -sS https://getcomposer.org/installer | php

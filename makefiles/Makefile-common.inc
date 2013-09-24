@@ -1,12 +1,12 @@
 #TODO: Add lint/style checks
 
-run: scratch$(BIN_EXT)
+run: setup scratch$(BIN_EXT)
 	if [ -x ../run ]; then ../run "$(RUN_CMD) scratch$(BIN_EXT)"; else $(RUN_CMD) ./scratch$(BIN_EXT); fi
 
-check: scratch$(BIN_EXT)
+check: setup scratch$(BIN_EXT)
 	if [ -x ../check ]; then ../check "$(RUN_CMD) scratch$(BIN_EXT)"; else $(RUN_CMD) ./scratch$(BIN_EXT); fi
 
-check-solution: solution$(BIN_EXT)
+check-solution: setup solution$(BIN_EXT)
 	if [ -x ../check ]; then ../check "$(RUN_CMD) solution$(BIN_EXT)"; else $(RUN_CMD) ./solution$(BIN_EXT); fi
 
 edit: scratch$(SRC_EXT)
@@ -18,6 +18,9 @@ scratch$(SRC_EXT):
 clean:
 	rm -f scratch$(BIN_EXT) scratch$(SRC_EXT) $(SOLUTION_CLEAN)
 
+setup:
+
+
 ifneq ($(BIN_EXT), $(SRC_EXT))
 
 scratch$(BIN_EXT): scratch$(SRC_EXT)
@@ -28,6 +31,6 @@ SOLUTION_CLEAN=solution$(BIN_EXT)
 
 endif
 
-.PHONY: run check check-solution edit clean 
+.PHONY: run check check-solution edit clean setup
 
 -include Makefile-local
