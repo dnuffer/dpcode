@@ -6,7 +6,7 @@ import "os"
 
 func main() {
 	var opts struct {
-		Name string `short:"n" long:"name" description:"Use NAME to greet someone"`
+		Name string `short:"n" long:"name" description:"Use NAME to greet someone" required:true`
 	}
 
 	_, err := flags.Parse(&opts)
