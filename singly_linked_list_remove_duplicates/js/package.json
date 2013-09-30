@@ -1,0 +1,8 @@
+{
+  "name": "singly_linked_list_remove_duplicates",
+  "dependencies": {
+    "should": "x.x.x",
+    "simplesets": "x.x.x"
+  },
+  "engine": "node >= 0.4.1"
+}
