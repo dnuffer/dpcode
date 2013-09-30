@@ -8,3 +8,9 @@ REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); el
 SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
+
+setup: node_modules
+
+node_modules: package.json
+	npm install
+	touch node_modules

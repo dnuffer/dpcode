@@ -52,3 +52,4 @@ TestResult.xml
 # Ruby bundler and php composer directory for dependencies
 vendor
 *.lock
+node_modules
