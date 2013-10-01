@@ -1,0 +1,7 @@
+{
+  "name": "calculate_seconds_since_datetime",
+  "dependencies": {
+    "moment-timezone": "x.x.x"
+  },
+  "engine": "node >= 0.4.1"
+}
