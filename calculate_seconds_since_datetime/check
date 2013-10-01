@@ -1,6 +1,10 @@
 #!/bin/bash
 #set -x
 export PATH=.:$PATH
-out=$($*)
-[ "$out" = "Hello, world" ] || { printf "Failure\nExpected: Hello, world\nGot     : %s\n" "$out"; exit 1; }
+out=$($* <<EOS
+1970-01-29T07:08:09
+America/Denver
+EOS
+)
+[ "$out" = "What is your birthday? What Time Zone were you born in? On 2013-10-01T07:10:42-06:00 you were 1378162953 seconds old" ] || { printf "Failure\nExpected: What is your birthday? What Time Zone were you born in? On 2013-10-01T07:10:42-06:00 you were 1378162953 seconds old\nGot     : %s\n" "$out"; exit 1; }
 printf "Success!\n"
