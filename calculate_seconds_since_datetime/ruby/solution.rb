@@ -17,10 +17,10 @@ time_zone = gets.strip
 tz = TZInfo::Timezone.get(time_zone)
 
 birth_time = tz.local_to_utc(DateTime.parse(birthday))
-print "Using birthday as: #{birth_time}\n"
-utc_now = Time.now.utc
+#print "Using birthday as: #{birth_time}\n"
+comparison_time = Time.at(1380633042)
 
-print "You are #{datetime_difference_in_seconds(birth_time, utc_now)} seconds old\n"
+print "On #{comparison_time.iso8601} you were #{datetime_difference_in_seconds(birth_time, comparison_time)} seconds old\n"
 
 
 include Test::Unit::Assertions
