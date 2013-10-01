@@ -1,6 +1,6 @@
 SRC_EXT=.rb
 BIN_EXT=.rb
-RUN_CMD=ruby
+RUN_CMD=bundle exec ruby
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
@@ -8,3 +8,9 @@ REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); el
 SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
+
+setup: Gemfile.lock
+
+Gemfile.lock: Gemfile
+	bundle install
+	touch Gemfile.lock
