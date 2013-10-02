@@ -85,5 +85,9 @@ class QueueTest extends PHPUnit_Framework_TestCase
     }
   }
 }
+
+$suite  = new PHPUnit_Framework_TestSuite();
+$suite->addTestSuite('QueueTest');
+PHPUnit_TextUI_TestRunner::run($suite);
 ?>
 
