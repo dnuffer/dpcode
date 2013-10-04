@@ -9,9 +9,6 @@ function is_prime(number) {
 	return true;
 }
 
-var fs = require('fs');
-var outfile = 'first_100_primes.txt';
-
 var primes = [];
 var number = 2;
 while (primes.length < 100) {
@@ -23,5 +20,4 @@ while (primes.length < 100) {
 }
 
 var out = primes.join(",");
-fs.writeFileSync(outfile, out);
-console.log("Script: " + __filename + "\nWrote: " + out + "To: " + outfile);
+console.log(out);
