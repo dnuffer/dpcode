@@ -50,6 +50,9 @@ solution
 TestResult.xml
 
 # Ruby bundler and php composer directory for dependencies
-vendor
-*.lock
-node_modules
+*/*/vendor
+*/*/*.lock
+*/*/node_modules
+*/*/.gradle
+*/*/build
+
