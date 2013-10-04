@@ -43,7 +43,7 @@ set -e
 out=$($* --help 2>&1)
 function check_usage()
 {
-	[[ $out =~ Usage:.*(scratch|solution)\ \[(options|OPTIONS)\] ]] || { printf "Failure\nExpected to find Usage: scratch [options] in:\n%s" "$out"; exit 1; }
+	[[ $out =~ [Uu]sage:.*(scratch|solution)\ \[(options|OPTIONS)\] ]] || { printf "Failure\nExpected to find Usage: scratch [options] in:\n%s" "$out"; exit 1; }
 	[[ $out =~ -name ]] || { printf "Failure\nExpected to find -name in:\n%s" "$out"; exit 1; }
 	[[ $out =~ -help ]] || { printf "Failure\nExpected to find -help in:\n%s" "$out"; exit 1; }
 	[[ $out =~ -n ]] || { printf "Failure\nExpected to find -n in:\n%s" "$out"; exit 1; }
