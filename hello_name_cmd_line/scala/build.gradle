@@ -1,0 +1,50 @@
+apply plugin: 'scala'
+apply plugin: 'application'
+
+mainClassName = "scratch.main"
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+	main {
+		scala {
+			srcDir '.'
+			include 'scratch.scala'
+		}
+	}
+	test {
+		scala {
+			srcDir '.'
+			include 'scratch.scala'
+		}
+	}
+	solutionTest {
+		scala {
+			srcDir '.'
+			include 'solution.scala'
+		}
+	}
+}
+
+dependencies {
+	compile 'org.scala-lang:scala-library:2.9.1'
+	compile 'junit:junit-dep:4.10'
+	compile 'org.mockito:mockito-core:1.9.5'
+	compile 'commons-cli:commons-cli:1.2'
+	solutionTestCompile 'org.scala-lang:scala-library:2.9.1'
+	solutionTestCompile 'junit:junit-dep:4.10'
+	solutionTestCompile 'org.mockito:mockito-core:1.8.5'
+	solutionTestCompile 'commons-cli:commons-cli:1.2'
+}
+
+task scratch(type: Test) {
+	testClassesDir = sourceSets.test.output.classesDir
+	classpath = sourceSets.test.runtimeClasspath
+}
+
+task solution(type: Test) {
+	testClassesDir = sourceSets.solutionTest.output.classesDir
+	classpath = sourceSets.solutionTest.runtimeClasspath
+}

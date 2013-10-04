@@ -1,1 +1,1 @@
-../../makefiles/Makefile-scala
+../../makefiles/Makefile-gradle
