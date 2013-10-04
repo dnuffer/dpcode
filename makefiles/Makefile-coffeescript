@@ -9,8 +9,12 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
 
+ifneq ($(wildcard package.json),)
+
 setup: node_modules
 
 node_modules: package.json
 	rm -r node_modules
 	npm install
+
+endif

@@ -10,6 +10,8 @@ TOOLS_DIR := $(SELF_DIR)/../tools
 
 include $(SELF_DIR)/Makefile-common.inc
 
+ifneq ($(wildcard composer.json),)
+
 setup: composer.lock
 
 composer.lock: $(TOOLS_DIR)/composer.phar composer.json
@@ -18,3 +20,5 @@ composer.lock: $(TOOLS_DIR)/composer.phar composer.json
 
 $(TOOLS_DIR)/composer.phar:
 	cd $(TOOLS_DIR) && curl -sS https://getcomposer.org/installer | php
+
+endif

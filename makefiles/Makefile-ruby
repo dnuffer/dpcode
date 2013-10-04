@@ -9,8 +9,12 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
 
+ifneq ($(wildcard Gemfile),)
+
 setup: Gemfile.lock
 
 Gemfile.lock: Gemfile
 	bundle install
 	touch Gemfile.lock
+
+endif
