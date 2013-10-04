@@ -47,9 +47,18 @@ Dir.chdir($name) do
   open("check", "w", 0775) { |check| check.puts <<EOS
 #!/bin/bash
 #set -x
+set -u
 export PATH=.:$PATH
-out=$($*)
-[ "$out" = "Hello, world" ] || { printf "Failure\\nExpected: Hello, world\\nGot     : %s\\n" "$out"; exit 1; }
+command="$@"
+
+assert_output_is()
+{
+  expected="$1"
+  out=$($command)
+  [ "$out" = "$expected" ] || { printf "Failure\\nExpected: ${expected}\\nGot     : %s\\n" "$out"; exit 1; }
+}
+
+assert_output_is "Hello, world"
 printf "Success!\\n"
 EOS
   } unless File.exists?("check")
