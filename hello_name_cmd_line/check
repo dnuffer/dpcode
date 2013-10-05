@@ -11,7 +11,7 @@ out=$($* --name "Dan")
 out=$($* -n "Jiro")
 [[ "$out" = "Hello, Jiro" ]] || { printf "Failure\nExpected: Hello, Jiro\nGot     : %s\n" "$out"; exit 1; }
 
-function check_error()
+check_error()
 {
 	[[ $rv -ne 0 ]] || { printf "Failure\nExpected exit status: 1\nGot exit status     : %d\n" $rv; exit 1; }
 	[[ $out =~ (scratch|solution):  ]] || { printf "Failure\nExpected to find (scratch|solution):  in:\n%s" "$out"; exit 1; }
