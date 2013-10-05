@@ -1,4 +1,4 @@
 #!/bin/bash
 class=$1
 shift
-gradle $(basename "$class" .class) "$@"
+gradle --daemon -q run$(basename "$class" .class) -PappArgs="$*"
