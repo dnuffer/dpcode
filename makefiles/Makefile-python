@@ -1,6 +1,6 @@
 SRC_EXT=.py
 BIN_EXT=.py
-RUN_CMD=$(SELF_DIR)/../../dpcode-python-env/bin/python
+RUN_CMD=python-env/bin/python
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
@@ -8,3 +8,16 @@ REAL_MAKEFILE := $(shell if [ -L $(MAKEFILE) ]; then readlink -e $(MAKEFILE); el
 SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
+
+
+ifneq ($(wildcard requirements.txt),)
+REQUIREMENTS_TXT=requirements.txt
+INSTALL_REQUIREMENTS=python-env/bin/pip install -r requirements.txt
+endif
+
+setup: python-env
+
+python-env: $(REQUIREMENTS_TXT)
+	virtualenv python-env
+	$(INSTALL_REQUIREMENTS)
+	touch python-env

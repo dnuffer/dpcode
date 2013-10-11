@@ -49,10 +49,15 @@ solution
 
 TestResult.xml
 
-# Ruby bundler and php composer directory for dependencies
+# Ruby bundler directory for dependencies
 */*/vendor
 */*/*.lock
+# Nodejs npm directory for dependencies
 */*/node_modules
+# gradle directory for dependencies
 */*/.gradle
+# php composer directory for dependencies
 */*/build
+# Python virtualenv/pip directory for dependencies
+*/*/python-env
 
