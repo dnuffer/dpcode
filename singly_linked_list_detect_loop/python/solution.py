@@ -27,8 +27,8 @@ True
 True
 """
 
-import sys
-sys.path.insert(0, '../singly_linked_list_complete')
+#import sys
+#sys.path.insert(0, '../../python/singly_linked_list_complete')
 
 from singly_linked_list import singly_linked_list, singly_linked_list_node
 
@@ -63,4 +63,4 @@ if __name__ == '__main__':
     import sys
     sys.exit(1)
   else:
-    print "Success:", result
+    print "All tests passed:", result
