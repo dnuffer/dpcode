@@ -12,10 +12,11 @@ birthday = gets.strip
 print "What Time Zone were you born in? "
 time_zone = gets.strip
 
-# TODO calculate the difference between now and the given birthday
+# TODO calculate the difference between comparison_time and the given birthday
 
 
-print "You are #{datetime_difference_in_seconds(birth_time, utc_now)} seconds old\n"
+comparison_time = Time.at(1380633042)
+print "On #{comparison_time.iso8601} you were #{datetime_difference_in_seconds(birth_time, comparison_time)} seconds old\n"
 
 
 include Test::Unit::Assertions
