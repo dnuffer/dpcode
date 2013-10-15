@@ -1,4 +1,4 @@
 #!/bin/bash
 class=$1
 shift
-java -classpath .:$(cat classpath) $(basename "$class" .class) "$@"
+java -classpath .:$(cat classpath 2>/dev/null) $(basename "$class" .class) "$@"
