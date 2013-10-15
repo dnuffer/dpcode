@@ -52,6 +52,8 @@ TestResult.xml
 # Ruby bundler directory for dependencies
 */*/vendor
 */*/*.lock
+*/*/.bundle
+*/*/bin
 # Nodejs npm directory for dependencies
 */*/node_modules
 # gradle directory for dependencies
