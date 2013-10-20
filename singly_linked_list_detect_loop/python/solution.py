@@ -27,9 +27,6 @@ True
 True
 """
 
-#import sys
-#sys.path.insert(0, '../../python/singly_linked_list_complete')
-
 from singly_linked_list import singly_linked_list, singly_linked_list_node
 
 # TODO: write a function that returns None if the list is good (i.e. no loops)

@@ -22,9 +22,6 @@
 [A -> b]
 """
 
-import sys
-sys.path.insert(0, '../singly_linked_list_complete')
-
 from singly_linked_list import singly_linked_list
 
 def remove_duplicates(sll):
