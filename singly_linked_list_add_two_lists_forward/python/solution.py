@@ -25,9 +25,6 @@
 [1 -> 3 -> 1 -> 2]
 """
 
-import sys
-sys.path.insert(0, '../singly_linked_list_complete')
-
 from singly_linked_list import singly_linked_list, singly_linked_list_node
 
 # TODO: You have two numbers represented by a linked list, where each node
