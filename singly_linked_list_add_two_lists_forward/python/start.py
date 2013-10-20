@@ -4,6 +4,7 @@ from singly_linked_list import singly_linked_list, singly_linked_list_node
 # contains a single digit. The digits are stored in forward order, such that
 # 1's digit is at the tail of the list. Write a function that adds the two
 # numbers and returns the sum as a linked list in forward order
+# e.g. 1->2 + 3->4 = 4->6
 
 if __name__ == '__main__':
   import doctest
