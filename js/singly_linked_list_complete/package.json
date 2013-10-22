@@ -1,0 +1,15 @@
+{
+  "name": "singly_linked_list",
+  "version": "1.0.0",
+  "description": "Singly Linked List",
+  "main": "./lib/singly_linked_list.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Dan Nuffer",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "should" : ">=2.0.2",
+    "mocha" : ">=1.13.0"
+  }
+}
