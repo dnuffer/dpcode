@@ -1,0 +1,3 @@
+Write a function that computes the closed-form solution to linear regression 
+normalEqn(X,y) computes the closed-form solution to linear 
+regression using the normal equations.
