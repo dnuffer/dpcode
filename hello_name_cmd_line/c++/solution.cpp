@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
 	string name;
 
-	options_description desc("Allowed options");
+	options_description desc("Usage: solution [options]");
 	desc.add_options()
 		("help", "print help")
 		("name,n", value<string>(&name), "set name");
@@ -21,8 +21,8 @@ int main(int argc, char** argv)
 	}
 	catch (error& e)
 	{
-		cerr << e.what() << endl;
-		cerr << desc << endl;
+		cerr << "solution: " << e.what() << endl;
+		cerr << "Try `solution --help' for more information." << endl;
 		return 1;
 	}
 	notify(vm);
@@ -35,8 +35,8 @@ int main(int argc, char** argv)
 
 	if (vm.count("name") == 0)
 	{
-		cerr << "missing --name" << endl;
-		cerr << desc << endl;
+		cerr << "solution: missing --name" << endl;
+		cerr << "Try `solution --help' for more information." << endl;
 		return 1;
 	}
 
