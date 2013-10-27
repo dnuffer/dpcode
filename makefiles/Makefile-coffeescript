@@ -14,7 +14,7 @@ ifneq ($(wildcard package.json),)
 setup: node_modules
 
 node_modules: package.json
-	rm -r node_modules
+	rm -rf node_modules
 	npm install
 
 endif
