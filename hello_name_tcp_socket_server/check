@@ -1,8 +1,29 @@
 #!/bin/bash
-#set -x
+set -x
+set -u
+set -v
 export PATH=.:$PATH
-$* 9999 &
-out=$(echo Dan | nc localhost 9999)
-wait %1
-[ "$out" = "Hello, Dan" ] || { printf "Failure\nExpected: Hello, Dan\nGot     : %s\n" "$out"; exit 1; }
+command=$*
+
+check_name()
+{
+	name=$1
+	$command 9999 > recv_output 2>recv_error &
+	trap 'kill %1' INT TERM EXIT
+	while [ "$(cat recv_output)" != "Ready" ] && [ -z "$(cat recv_error)" ]; do
+		:
+	done
+	out=$(echo $name | nc localhost 9999)
+	if [ $? -ne 0 ]; then
+		printf "Failure\nCommand exit status: $?"
+		exit 1
+	fi
+	wait %1
+	trap - INT TERM EXIT
+	[ "$out" = "Hello, ${name}" ] || { printf "Failure\nExpected: Hello, ${name}\nGot     : %s\n" "$out"; exit 1; }
+	rm recv_output recv_error
+}
+
+check_name Dan
+check_name Jiro
 printf "Success!\n"

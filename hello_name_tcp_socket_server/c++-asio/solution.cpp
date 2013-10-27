@@ -36,6 +36,7 @@ void session(tcp::socket sock)
 void server(boost::asio::io_service& io_service, unsigned short port)
 {
 	tcp::acceptor a(io_service, tcp::endpoint(tcp::v4(), port));
+	std::cout << "Ready" << std::endl;
 	for (;;)
 	{
 		tcp::socket sock(io_service);

@@ -1,8 +1,8 @@
 var net = require('net');
 var server = net.createServer(function(c) { //'connection' listener
-  console.log('server connected');
+  //console.log('server connected');
   c.on('end', function() {
-    console.log('server disconnected');
+    //console.log('server disconnected');
   });
   c.on('data', function(data) {
     c.write('Hello, ' + data);
@@ -10,6 +10,6 @@ var server = net.createServer(function(c) { //'connection' listener
     c.end();
   });
 });
-server.listen(8124, function() { //'listening' listener
-  console.log('server bound');
+server.listen(9999, function() { //'listening' listener
+  console.log('Ready');
 });
