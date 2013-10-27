@@ -1,0 +1,24 @@
+#!/bin/bash
+
+GO_VERSION="$1"
+shift
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+gvm use "$GO_VERSION"
+PKGSET_NAME=$(pwd | sed 's~/~_~g')
+
+setup_pkgset()
+{
+	gvm pkgset create "$PKGSET_NAME"
+	gvm pkgset use "$PKGSET_NAME"
+	mkdir .gopkg
+	ln -s `readlink -e solution.go` .gopkg/solution.go
+	pushd .gopkg
+	go get -d .
+	popd
+}
+
+gvm pkgset use "$PKGSET_NAME" || { setup_pkgset && gvm pkgset use "$PKGSET_NAME"; }
+
+$*
