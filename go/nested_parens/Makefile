@@ -1,1 +1,1 @@
-../common/Makefile
+../../makefiles/Makefile-go

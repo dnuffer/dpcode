@@ -62,4 +62,5 @@ TestResult.xml
 */*/build
 # Python virtualenv/pip directory for dependencies
 */*/python-env
-
+# go_env temp dir for go get
+*/*/.gopkg

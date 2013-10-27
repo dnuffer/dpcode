@@ -1,1 +1,1 @@
-../../python/common/Makefile
+../../makefiles/Makefile-python

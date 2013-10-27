@@ -8,5 +8,7 @@ edit:
 check:
 	diff --ignore-all-space solution.template scratch.template 
 
+check-solution:
+
 clean:
 	rm -f scratch.template

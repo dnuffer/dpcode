@@ -1,4 +1,17 @@
-dirs_to_check=$(find . -name solution\* -size +1b | xargs -n 1 dirname | sort | uniq)
+#!/bin/bash
+
+set -e
+set -u
+set -x
+
+#dirs_to_check=$(find . -name solution.\* -size +1b | xargs -n 1 dirname | sort | uniq)
+dirs_to_check()
+{
+	find . -name solution.\* -size +1b | xargs -n 1 dirname | sort | uniq | grep -v scala
+	#find . -name solution.\* -size +1b | xargs -n 1 dirname | sort | uniq
+}
+
+echo "$(dirs_to_check)"
 
 list_make_targets()
 {
@@ -10,7 +23,8 @@ have_make_target()
 	list_make_targets | grep -q "$1" 2>/dev/null
 }
 
-while read -r dir_to_check; do
+dirs_to_check | while read -r dir_to_check; do
+	echo "Checking $dir_to_check"
 	pushd $dir_to_check
 	if have_make_target clean; then
 		make clean
@@ -18,8 +32,13 @@ while read -r dir_to_check; do
 	if have_make_target check-solution; then
 		if ! make check-solution; then
 			echo "Dir $dir_to_check failed!"
-			break;
+			exit 1;
+		else
+			echo "Dir $dir_to_check passed!"
 		fi
+	else
+		echo "Dir $dir_to_check doesn't have check-solution!"
+		exit 1
 	fi
 	popd
-done <<< "$dirs_to_check"
+done
