@@ -1,6 +1,6 @@
 SRC_EXT=.js
 BIN_EXT=.js
-RUN_CMD=mocha
+RUN_CMD=./node_modules/.bin/mocha
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
@@ -9,12 +9,8 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 
 include $(SELF_DIR)/Makefile-common.inc
 
-ifneq ($(wildcard package.json),)
-
 setup: node_modules
 
 node_modules: package.json
 	rm -rf node_modules
 	npm install
-
-endif

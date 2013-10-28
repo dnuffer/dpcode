@@ -1,8 +1,11 @@
 {
   "name": "singly_linked_list_remove_duplicates",
   "dependencies": {
-    "should": "x.x.x",
     "simplesets": "x.x.x"
+  },
+  "devDependencies": {
+    "should": "x.x.x",
+    "mocha": ">=1.13.0"
   },
   "engine": "node >= 0.4.1"
 }

@@ -9,5 +9,7 @@ edit:
 check:
 	diff --ignore-all-space solution.r scratch.r 
 
+check-solution:
+
 clean:
 	rm -f scratch.r Rplots.pdf
