@@ -7,7 +7,7 @@ $name = ""
 $langs = []
 $todo = "TODO: Write what the exercise should do"
 options = OptionParser.new do |o|
-  o.banner  = "Usage: setup_new_exercise.rb [options]\n" +
+  o.banner  = "Usage: #{File.basename(__FILE__)} [options]\n" +
               "  create directories and Makefile symlinks for a new exercise\n" +
               "  Valid langs:\n      #{LangSelector.known_langs.join("\n      ")}\n\n" 
   o.on("-n", "--name NAME", "Exercise name. Required.") { |name| $name = name }
