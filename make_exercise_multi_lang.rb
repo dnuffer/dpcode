@@ -38,10 +38,11 @@ puts "Langs: #{$langs.join(", ")}"
 
 def system_must_succeed(command)
   puts "command:\n#{command}"
-  #fail "Failed running \"#{command}\"" unless system(command)
+  fail "Failed running \"#{command}\"" unless system(command)
 end
 
 system_must_succeed("./setup_new_exercise.rb --name \"#{$name}\" --langs \"#{$langs.join(",")}\"")
+system_must_succeed("rm \"#{$name}\"/check")
 if File.exists?("#{$existing_dir}/README")
   system_must_succeed("mv -f \"#{$existing_dir}\"/README \"#{$name}/\"")
 end
