@@ -64,3 +64,9 @@ TestResult.xml
 */*/python-env
 # go_env temp dir for go get
 */*/.gopkg
+# CMake stuff
+*/*/CMakeFiles
+*/*/CMakeCache.txt
+*/*/CTestTestfile.cmake
+*/*/Testing
+*/*/cmake_install.cmake
