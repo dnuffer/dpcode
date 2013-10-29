@@ -11,10 +11,10 @@ include $(SELF_DIR)/Makefile-common.inc
 
 ifneq ($(wildcard Gemfile),)
 
-setup: Gemfile.lock
+setup: bundle.installed
 
-Gemfile.lock: Gemfile
+bundle.installed: Gemfile.lock Gemfile
 	rvm 2.0.0 do bundle install
-	touch Gemfile.lock
+	touch bundle.installed
 
 endif

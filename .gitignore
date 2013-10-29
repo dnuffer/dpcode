@@ -54,6 +54,7 @@ TestResult.xml
 */*/*.lock
 */*/.bundle
 */*/bin
+*/*/bundle.installed
 # Nodejs npm directory for dependencies
 */*/node_modules
 # gradle directory for dependencies
