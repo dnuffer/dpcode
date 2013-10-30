@@ -9,7 +9,7 @@ describe("SinglyLinkedList", function() {
       var l = new SinglyLinkedList();
       l.append(0);
       l.head.data.should.equal(0);
-      assert(!l.head.next_node);
+      assert(!l.head.nextNode);
       l.head.should.equal(l.tail);
       l.toString().should.equal("[0]");
       l.append(null);
@@ -39,11 +39,11 @@ describe("SinglyLinkedList", function() {
     });
   });
 
-  describe("#append_node", function() {
+  describe("#appendNode", function() {
     it("appends a node", function() {
       var l1 = new SinglyLinkedList([1,2]);
       var l2 = new SinglyLinkedList([3,4]);
-      l1.append_node(l2.head);
+      l1.appendNode(l2.head);
       l1.toString().should.equal("[1 -> 2 -> 3 -> 4]");
     });
   });
