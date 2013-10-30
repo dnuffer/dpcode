@@ -1,0 +1,13 @@
+{
+  "name": "singly_linked_list_add_two_lists_forward",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node scratch.js"
+  },
+  "author": "Dan Nuffer",
+  "license": "BSD-2-Clause",
+  "dependencies" : {
+    "optimist" : ">=0.6.0"
+  },
+  "engine": "node >= 0.10.21"
+}
