@@ -46,7 +46,7 @@ system_must_succeed("rm \"#{$name}\"/check")
 if File.exists?("#{$existing_dir}/README")
   system_must_succeed("mv -f \"#{$existing_dir}\"/README \"#{$name}/\"")
 end
-system_must_succeed("mv -f \"#{$existing_dir}\"/* \"#{$name}/#{$existing_lang}\"")
+system_must_succeed("mv -f `find \"#{$existing_dir}\" -maxdepth 1 -type f` \"#{$name}/#{$existing_lang}\"")
 system_must_succeed("rmdir \"#{$existing_dir}\"")
 system_must_succeed("git rm -r \"#{$existing_dir}\"")
 system_must_succeed("git add \"#{$name}\"")
