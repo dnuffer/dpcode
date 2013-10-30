@@ -13,7 +13,7 @@ ifneq ($(wildcard Gemfile),)
 
 setup: bundle.installed
 
-bundle.installed: Gemfile.lock Gemfile
+bundle.installed: Gemfile
 	rvm 2.0.0 do bundle install
 	touch bundle.installed
 
