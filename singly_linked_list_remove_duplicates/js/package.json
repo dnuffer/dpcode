@@ -1,9 +1,6 @@
 {
   "name": "singly_linked_list_remove_duplicates",
   "version": "1.0.0",
-  "scripts": {
-    "test": "node scratch.js"
-  },
   "author": "Dan Nuffer",
   "license": "BSD-2-Clause",
   "dependencies": {

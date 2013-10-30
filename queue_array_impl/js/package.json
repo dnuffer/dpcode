@@ -1,13 +1,11 @@
 {
   "name": "queue_array_impl",
   "version": "1.0.0",
-  "scripts": {
-    "test": "mocha"
-  },
   "author": "Dan Nuffer",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "should" : ">=2.0.2",
     "mocha" : ">=1.13.0"
-  }
+  },
+  "engine": "node >= 0.10.21"
 }
