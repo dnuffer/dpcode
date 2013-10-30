@@ -7,6 +7,7 @@
 *.dll
 *.class
 *.beam
+*.pyc
 
 # Compiled Dynamic libraries
 *.so
