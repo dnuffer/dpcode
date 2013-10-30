@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var s = require("./SinglyLinkedList");
+var s = require("../../js/singly_linked_list_complete/lib/singly_linked_list");
 
 var sets = require("simplesets");
 
@@ -10,7 +10,7 @@ function removeDuplicates(sll) {
   var prev = null;
   while (node) {
     if (seen_data.has(node.data)) {
-      prev.next_node = node.next_node;
+      prev.nextNode = node.nextNode;
       if (sll.tail == node) {
         sll.tail = prev;
       }
@@ -18,7 +18,7 @@ function removeDuplicates(sll) {
       seen_data.add(node.data);
       prev = node;
     }
-    node = node.next_node;
+    node = node.nextNode;
   }
   return sll;
 }

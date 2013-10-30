@@ -1,5 +1,11 @@
 {
   "name": "singly_linked_list_remove_duplicates",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node scratch.js"
+  },
+  "author": "Dan Nuffer",
+  "license": "BSD-2-Clause",
   "dependencies": {
     "simplesets": "x.x.x"
   },
@@ -7,5 +13,5 @@
     "should": "x.x.x",
     "mocha": ">=1.13.0"
   },
-  "engine": "node >= 0.4.1"
+  "engine": "node >= 0.10.21"
 }

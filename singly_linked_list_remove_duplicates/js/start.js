@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var s = require("./SinglyLinkedList");
+var s = require("../../js/singly_linked_list_complete/lib/singly_linked_list");
 
 
 require("should");
