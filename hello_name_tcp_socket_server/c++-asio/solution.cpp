@@ -8,14 +8,14 @@ using boost::asio::ip::tcp;
 
 const int max_length = 1024;
 
-void session(tcp::socket sock)
+void session(std::shared_ptr<tcp::socket> sock)
 {
 	try
 	{
 		char data[max_length];
 
 		boost::system::error_code error;
-		size_t length = sock.read_some(boost::asio::buffer(data), error);
+		size_t length = sock->read_some(boost::asio::buffer(data), error);
 		if (error == boost::asio::error::eof)
 			return; // Connection closed cleanly by peer.
 		else if (error)
@@ -25,7 +25,7 @@ void session(tcp::socket sock)
 		if (response[response.size()-1] != '\n')
 			response += "\n";
 
-		boost::asio::write(sock, boost::asio::buffer(response, response.size()));
+		boost::asio::write(*sock, boost::asio::buffer(response, response.size()));
 	}
 	catch (std::exception& e)
 	{
@@ -39,8 +39,8 @@ void server(boost::asio::io_service& io_service, unsigned short port)
 	std::cout << "Ready" << std::endl;
 	for (;;)
 	{
-		tcp::socket sock(io_service);
-		a.accept(sock);
+		std::shared_ptr<tcp::socket> sock(new tcp::socket(io_service));
+		a.accept(*sock);
 		std::thread t(session, std::move(sock));
 		t.join();
 		return;
