@@ -1,5 +1,5 @@
-language: cpp
-compiler:
-  - gcc
-# Change this to your needs
+language: python
+python:
+  - "2.7"
+install:
 script: ./check_all.rb
