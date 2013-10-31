@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 def dirs_to_check
-  system "find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e | sort | uniq"
-	`find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e | sort | uniq | grep -v -E '(build|vendor)'`.split("\n")
+  `find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e`.split("\n").uniq.reject {|s| s =~ /\b(build|vendor)\b/ }
+	#`find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e | sort | uniq | grep -v -E '(build|vendor)'`.split("\n")
 end
 
 def list_make_targets
