@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
 def dirs_to_check
-  `find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e`.split("\n").uniq.reject {|s| s =~ /\b(build|vendor)\b/ }
+  dirs_with_solution = `find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e`.split("\n")
+  puts "1: #{dirs_with_solution.inspect}"
+  dirs_with_solution_clean = dirs_with_solution.uniq.reject {|s| s =~ /\b(build|vendor)\b/ }
+  puts "2: #{dirs_with_solution_clean.inspect}"
+  return dirs_with_solution_clean
 	#`find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e | sort | uniq | grep -v -E '(build|vendor)'`.split("\n")
 end
 
