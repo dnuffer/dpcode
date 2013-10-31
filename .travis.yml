@@ -2,4 +2,4 @@ language: cpp
 compiler:
   - gcc
 # Change this to your needs
-script: find .; ./check_all.rb
+script: ./check_all.rb
