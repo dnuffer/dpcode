@@ -2,11 +2,7 @@
 
 def dirs_to_check
   dirs_with_solution = `find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e`.split("\n")
-  puts "1: #{dirs_with_solution.inspect}"
-  dirs_with_solution_clean = dirs_with_solution.uniq.reject {|s| s =~ /\b(build|vendor)\b/ }
-  puts "2: #{dirs_with_solution_clean.inspect}"
-  return dirs_with_solution_clean
-	#`find . -name 'solution.*' -size +1b | xargs -n 1 dirname | xargs -n 1 readlink -e | sort | uniq | grep -v -E '(build|vendor)'`.split("\n")
+  dirs_with_solution.uniq.reject {|s| s =~ /\/dpcode\/.*\b(build|vendor)\b/ }
 end
 
 def list_make_targets
@@ -16,6 +12,8 @@ end
 def have_make_target(target)
   list_make_targets.include? target
 end
+
+puts "Checking #{dirs_to_check.count} dirs"
 
 dirs_to_check.each do |dir|
   Dir.chdir(dir) do
