@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './discrete_sampler_condensed_table_lookup'
+require './array_sampler'
 
 # http://www.tiobe.com/content/paperinfo/tpci/index.html
 #2013 2012  Language              Rating  Delta     Status
@@ -100,7 +100,7 @@ class LangSelector
     @lang_dir_and_weights =
       Hash[ entries.map { |entry| [entry, LangSelector.weight_for_exercise(entry)] } ]
     fail "No matching language directories found in #{top_dir}" if @lang_dir_and_weights.empty?
-    @ds = DiscreteSamplerCondensedTableLookup.new(@lang_dir_and_weights)
+    @ds = ArraySampler.new(@lang_dir_and_weights)
   end
 
   def pick_lang
