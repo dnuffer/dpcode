@@ -39,9 +39,9 @@ class LangSelector
           "c#"            => 1,
           "octave"        => 3,
           "R"             => 3,
+          "scala"         => 3,
           # for now, just focus on establishing a base with the above languages, and then I'll add the others in one-by-one
           #"php"           => 3,
-          #"scala"         => 3,
           #"coffeescript"  => 3,
           #"c"             => 2,
           #"bash"          => 2,
