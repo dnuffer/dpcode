@@ -1,3 +1,5 @@
+require 'rspec'
+
 class Object
   def if_nil_then(x)
     if nil?
@@ -36,50 +38,42 @@ module Make
     end
     memo
   end
-
-  def self.need_to_build(dependencies, target)
-    return true unless File.exist? target
-    return dependencies.any? { |dependency| File.mtime(dependency) >= File.mtime(target) }
-  end
-
-  # takes an ast of a makefile, target to build (nil means first), and executes commands in the correct order
-  # @param [Array of Hash] rules
-  # @param [String] goal
-  def self.execute(rules, goal = nil)
-    goal ||= rules.first[:target]
-
-    rules_hash = Hash[rules.map { |x| [x[:target], x] }]
-
-    raise "Invalid target: #{goal}" unless rules_hash[goal]
-
-    build_target(rules_hash, rules_hash[goal])
-  end
-
-  def self.build_target(rules_hash, goal)
-    return if goal[:built] || !need_to_build(goal[:prerequisites], goal[:target])
-
-    # mark complete
-    goal[:built] = true
-
-    goal[:prerequisites].each do |dep|
-      build_target(rules_hash, rules_hash[dep])
-    end
-
-    # execute commands
-    goal[:commands].each do |command|
-      raise "Failed: #{command}" unless system command
-    end
-  end
-
-  # function that reads a file, parses it, and executes it.
-  def self.driver(input, goal = nil)
-    rules = parse(input)
-    execute(rules, goal)
-  end
-
 end
 
 if __FILE__ == $0
-  #Make.driver(File.open("Makefile", "r") { |f| f.read }, ARGV[0])
-  system 'rspec *_spec.rb'
+  system "rspec #{__FILE__}"
+end
+
+describe Make do
+  it "parses one target" do
+    Make.parse("one:").should == [{:target => "one", :prerequisites => [], :commands => [], :built => false}]
+  end
+  it "parses target and prerequisite" do
+    Make.parse("one: p1").should == [{:target => "one", :prerequisites => ["p1"], :commands => [], :built => false}]
+  end
+  it "parses target and two prerequisite" do
+    Make.parse("one: p1 p2").should == [{:target => "one", :prerequisites => ["p1", "p2"], :commands => [], :built => false}]
+  end
+  it "parses commands" do
+    Make.parse(<<EOS
+one: p1
+\tc1
+\tc2
+EOS
+              ).should == [{:target => "one", :prerequisites => ["p1"], :commands => ["c1", "c2"], :built => false}]
+  end
+  it "parses multiple rules" do
+    Make.parse(<<EOS
+one: p1
+\tc1
+\tc2
+
+two: p2
+\tc1
+\tc2
+EOS
+              ).should == [
+                {:target => "one", :prerequisites => ["p1"], :commands => ["c1", "c2"], :built => false},
+                {:target => "two", :prerequisites => ["p2"], :commands => ["c1", "c2"], :built => false}]
+  end
 end
