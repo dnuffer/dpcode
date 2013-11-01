@@ -115,5 +115,15 @@ if __FILE__ == $0
   results = Hash.new(0)
   10000000.times { results[ds.sample] += 1 }
   puts results.inspect
+
+  events_and_weights =
+  {
+    "python" => 3,
+  }
+  ds = DiscreteSamplerCondensedTableLookup.new(events_and_weights)
+  results = Hash.new(0)
+  130000.times { results[ds.sample] += 1 }
+  puts results.inspect
+
 end
 
