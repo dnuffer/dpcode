@@ -80,5 +80,5 @@ module Make
 end
 
 if __FILE__ == $0
-  Make.driver(File.open("Makefile", "r") { |f| f.read }, ARGV[0])
+  fail unless system "rspec solution_spec.rb"
 end
