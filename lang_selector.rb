@@ -33,7 +33,6 @@ class LangSelector
           "c++"           => 5,
           "go"            => 4,
           "java"          => 4,
-          "obj-c"         => 4,
           "ruby"          => 4,
           "python"        => 3,
           "c#"            => 1,
@@ -41,6 +40,7 @@ class LangSelector
           "R"             => 3,
           "scala"         => 3,
           # for now, just focus on establishing a base with the above languages, and then I'll add the others in one-by-one
+          #"obj-c"         => 4,
           #"php"           => 3,
           #"coffeescript"  => 3,
           #"c"             => 2,
