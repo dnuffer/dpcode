@@ -6,6 +6,7 @@ require './lang_selector'
 $name = ""
 $langs = []
 $todo = "TODO: Write what the exercise should do"
+$create_check = false
 options = OptionParser.new do |o|
   o.banner  = "Usage: #{File.basename(__FILE__)} [options]\n" +
               "  create directories and Makefile symlinks for a new exercise\n" +
@@ -15,6 +16,7 @@ options = OptionParser.new do |o|
     $langs += list
   end
   o.on("-t", "--todo TODO") { |todo| $todo = todo }
+  o.on("-c", "--create-check") { $create_check = true }
   o.on_tail('--help') { puts o; exit }
 end
 
@@ -44,7 +46,8 @@ Dir.chdir($name) do
     end
   end
   open("README", "w") { |readme| readme.puts  } unless File.exists?("README")
-  open("check", "w", 0775) { |check| check.puts <<EOS
+  if $create_check
+    open("check", "w", 0775) { |check| check.puts <<EOS
 #!/bin/bash
 #set -x
 set -u
@@ -61,5 +64,6 @@ assert_output_is()
 assert_output_is "Hello, world"
 printf "Success!\\n"
 EOS
-  } unless File.exists?("check")
+    } unless File.exists?("check")
+  end
 end
