@@ -1,0 +1,2 @@
+check:
+	R CMD check .
