@@ -1,6 +1,6 @@
 SRC_EXT=.r
 BIN_EXT=.r
-RUN_CMD=Rscript --vanilla 
+RUN_CMD=Rscript
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
