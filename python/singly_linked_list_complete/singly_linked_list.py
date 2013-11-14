@@ -30,12 +30,17 @@ class singly_linked_list:
     >>> l2=singly_linked_list([3,4])
     >>> print l1.append_node(l2.head)
     [1 -> 2 -> 3 -> 4]
+    >>> print l1.append(5)
+    [1 -> 2 -> 3 -> 4 -> 5]
     """
     if self.tail:
       self.tail.next_node = node
-      self.tail = node
     else:
       self.head = self.tail = node
+
+    while self.tail.next_node:
+      self.tail = self.tail.next_node
+
     return self
 
   def insert(self, position, data):
