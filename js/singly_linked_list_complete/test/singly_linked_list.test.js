@@ -45,6 +45,8 @@ describe("SinglyLinkedList", function() {
       var l2 = new SinglyLinkedList([3,4]);
       l1.appendNode(l2.head);
       l1.toString().should.equal("[1 -> 2 -> 3 -> 4]");
+      l1.append(5);
+      l1.toString().should.equal("[1 -> 2 -> 3 -> 4 -> 5]");
     });
   });
 
