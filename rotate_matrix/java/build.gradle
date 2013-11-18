@@ -1,0 +1,43 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir '.'
+			include 'scratch.java'
+		}
+	}
+	test {
+		java {
+			srcDir '.'
+			include 'scratch.java'
+		}
+	}
+	solutionTest {
+		java {
+			srcDir '.'
+			include 'solution.java'
+		}
+	}
+}
+
+dependencies {
+    compile 'junit:junit-dep:4.10'
+    compile 'org.mockito:mockito-core:1.8.5'
+    solutionTestCompile 'junit:junit-dep:4.10'
+    solutionTestCompile 'org.mockito:mockito-core:1.8.5'
+}
+
+task scratch(type: Test) {
+	testClassesDir = sourceSets.test.output.classesDir
+	classpath = sourceSets.test.runtimeClasspath
+}
+
+task solution(type: Test) {
+	testClassesDir = sourceSets.solutionTest.output.classesDir
+	classpath = sourceSets.solutionTest.runtimeClasspath
+}
