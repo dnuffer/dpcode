@@ -12,13 +12,20 @@ setup_pkgset()
 {
 	gvm pkgset create "$PKGSET_NAME"
 	gvm pkgset use "$PKGSET_NAME"
-	mkdir .gopkg
-	ln -s `readlink -e solution.go` .gopkg/solution.go
+	setup_dot_gopkg
+}
+
+setup_dot_gopkg()
+{
+	[ -e .gopkg ] || mkdir .gopkg
+	[ -e .gopkg/solution.go ] || ln -s `readlink -e solution.go` .gopkg/solution.go
+	[ -e .gopkg/scratch.go ] || ln -s `readlink -e scratch.go` .gopkg/scratch.go
 	pushd .gopkg
 	go get -d .
 	popd
 }
 
 gvm pkgset use "$PKGSET_NAME" || { setup_pkgset && gvm pkgset use "$PKGSET_NAME"; }
+setup_dot_gopkg
 
 $*
