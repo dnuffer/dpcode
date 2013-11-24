@@ -1,0 +1,1 @@
+Generate all t-combinations c_t ... c_2 c_1 of the n numbers {0, 1, ..., n - 1}, given n >= t >= 0.
