@@ -52,14 +52,13 @@ func (g *CombinationsGenerator) Next() (result []uint) {
 		}
 		
 		// step T4 [Find j.] Set c_j-1 <- j - 2 and x <- c_j + 1. If x == c_j+1, set j <- j + 1 and repeat step T4
-		looping := true
-		for looping {
+		for {
 			g.c[g.j-2] = g.j - 2
 			g.x = g.c[g.j - 1] + 1
 			if g.x == g.c[g.j] {
 				g.j++
 			} else {
-				looping = false
+				break
 			}
 		}
 	
@@ -69,7 +68,7 @@ func (g *CombinationsGenerator) Next() (result []uint) {
 		}
 	}
 	
-	// step T6 [Increate c_j.] Set c_j <- x, j <- j - 1, and return to T2.
+	// step T6 [Increase c_j.] Set c_j <- x, j <- j - 1, and return to T2.
 	g.c[g.j - 1] = g.x
 	g.j--
 
