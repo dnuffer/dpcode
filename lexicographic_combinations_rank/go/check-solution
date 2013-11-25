@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ -e .gopkg ] && rm -r .gopkg
+mkdir .gopkg
+ln -s ../solution.go .gopkg/solution.go 
+ln -s ../solution_test.go .gopkg/solution_test.go 
+go test ./.gopkg
