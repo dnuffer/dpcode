@@ -3,24 +3,24 @@
 package solution
 
 type CombinationsGenerator struct {
-	c []uint
-	n uint
-	t uint
-	j uint
-	x uint
+	c []uint64
+	n uint64
+	t uint64
+	j uint64
+	x uint64
 	done bool
 }
 
-func New(n, t uint) (result *CombinationsGenerator) {
+func New(n, t uint64) (result *CombinationsGenerator) {
 	if t >= n {
 		panic("t >= n")
 	} else if t == 0 {
 		panic("t == 0")
 	}
 
-	result = &CombinationsGenerator{ c: make([]uint, t+2), n: n, t: t }
+	result = &CombinationsGenerator{ c: make([]uint64, t+2), n: n, t: t }
 	// step T1. [Initialize] Set c_j <- j - 1 for 1 <= j <= t; then set c_t+1 <- n, c_t+2 <- 0, and j <- t
-	for j := uint(0); j < t; j++ {
+	for j := uint64(0); j < t; j++ {
 		result.c[j] = j
 	}
 	result.c[t] = n
@@ -33,10 +33,14 @@ func (g *CombinationsGenerator) HasNext() bool {
 	return !g.done
 }
 
-func (g *CombinationsGenerator) Next() (result []uint) {
+func (g *CombinationsGenerator) Current() (result []uint64) {
+	return g.c[0:g.t]
+}
+
+func (g *CombinationsGenerator) Next() (result []uint64) {
 	// step T2p1 [Visit.] (At this point j is the smallest index such that c_j+1 > j.) Visit the combination c_t ... c_2 c_1.
 	// have to make a copy because the following processing changes the underlying array
-	result = make([]uint, g.t)
+	result = make([]uint64, g.t)
 	copy(result, g.c[0:g.t])
 
 	// step T2p2 Then, if j > 0, set x <- j and go to step T6
@@ -74,4 +78,3 @@ func (g *CombinationsGenerator) Next() (result []uint) {
 
 	return
 }
-
