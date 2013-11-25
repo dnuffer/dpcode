@@ -1,4 +1,6 @@
 #!/bin/bash
+#set -u
+set -x
 
 GO_VERSION="$1"
 shift
@@ -19,7 +21,9 @@ setup_dot_gopkg()
 {
 	[ -e .gopkg ] || mkdir .gopkg
 	[ -e .gopkg/solution.go ] || ln -s `readlink -e solution.go` .gopkg/solution.go
-	[ -e .gopkg/scratch.go ] || ln -s `readlink -e scratch.go` .gopkg/scratch.go
+	if [ -e scratch.go ]; then
+		[ -e .gopkg/scratch.go ] || ln -s `readlink -e scratch.go` .gopkg/scratch.go
+	fi
 	pushd .gopkg
 	go get -d .
 	popd
