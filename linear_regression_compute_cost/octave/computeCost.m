@@ -8,3 +8,5 @@ m = length(y); % number of training examples
 J = (1 / (2 * m)) * (X * theta - y)' * (X * theta - y);
 
 end
+%!test
+%! assert(computeCost([10 20; 300 400], [5; 50], [5; 2]), 1267431.25, 1e-6)
