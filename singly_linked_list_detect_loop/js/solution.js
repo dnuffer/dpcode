@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var s = require("../../js/singly_linked_list_complete/lib/singly_linked_list");
-sll = s.SinglyLinkedList;
+var sll = s.SinglyLinkedList;
 require("should");
 var assert = require("assert");
 
