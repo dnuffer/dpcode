@@ -1,3 +1,11 @@
+# Instructions:
+# To override make directives, create a Makefile-local file
+# Make variables that can be changed for built in rules: 
+# http://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html
+# CXXFLAGS
+# LDFLAGS
+# LDLIBS
+
 SRC_EXT=.cpp
 BIN_EXT=
 CXXFLAGS=-std=c++0x -g
