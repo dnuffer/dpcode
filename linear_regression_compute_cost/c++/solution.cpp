@@ -2,27 +2,28 @@
 #define BOOST_TEST_MODULE Scratch
 #include <boost/test/unit_test.hpp>
 #include <armadillo>
-#include <iostream>
+//#include <iostream>
 
 using namespace arma;
-using namespace std;
 
-double compute_cost(const mat& X, const mat& Y, const mat& theta)
+double compute_cost(const mat& X, const vec& Y, const vec& theta)
 {
-	auto m = Y.n_rows; // number of training examples
+	auto m = Y.n_rows;
 
-	mat J = (1.0 / (2.0 * m)) * ((X * theta - Y).t() * (X * theta - Y));
+	auto XtY = X * theta - Y;
+	mat J = (1.0 / (2.0 * m)) * (XtY.t() * XtY);
 	//cout << "J :\n" << J << endl;
-	return J(0,0);
+	return J(0, 0);
 }
+
 
 BOOST_AUTO_TEST_CASE(test1)
 {
 	mat X = "10 20; 300 400";
-	mat Y = "5; 50";
-	mat theta = "5; 2";
+	vec Y = "5 50";
+	vec theta = "5 2";
 	//cout << "X :\n" << X << endl;
 	//cout << "Y :\n" << Y << endl;
-	//cout << "theat :\n" << theta << endl;
+	//cout << "theta :\n" << theta << endl;
 	BOOST_CHECK_EQUAL(compute_cost(X, Y, theta), 1267431.25);
 }
