@@ -65,7 +65,7 @@ class LangSelector
           "php"           => "php",
           "python"        => "py",
           "octave"        => "m",
-          "R"             => "r",
+          "R"             => "R",
           "scala"         => "scala",
           "coffeescript"  => "coffee",
           "c"             => "c",
