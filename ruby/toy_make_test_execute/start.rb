@@ -1,10 +1,14 @@
 $:.unshift(*Dir[File.dirname(__FILE__)])
-if File.exist?(File.dirname(__FILE__) + "/scratch.rb")
-  require 'scratch'
-else
-  require 'solution'
-end
+require 'make'
 
 require 'rspec'
 
-#TODO: Write tests for execute()
+#TODO: Write tests for Make.execute()
+
+
+
+
+if __FILE__ == $0
+  #Make.driver(File.open("Makefile", "r") { |f| f.read }, ARGV[0])
+  system 'rspec scratch.rb'
+end
