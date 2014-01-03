@@ -1,0 +1,17 @@
+function pascal(x, y) {
+  if (x == 0 || x == y) {
+    return 1;
+  } else {
+    return pascal(x-1, y-1) + pascal(x, y-1);
+  }
+}
+
+require("should");
+
+describe("pascal", function() {
+  it("should work", function() {
+    pascal(0, 2).should.equal(1);
+    pascal(1, 2).should.equal(2);
+    pascal(1, 3).should.equal(3);
+  });
+});
