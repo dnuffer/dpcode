@@ -1,0 +1,2 @@
+LDLIBS=-lboost_system -lboost_thread
+CXXFLAGS=-pthread
