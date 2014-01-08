@@ -19,8 +19,9 @@ test solution
 %! y = data(:, 3);
 %! [m, n] = size(X);
 %! X = [ones(m, 1) X];
+%! lambda = 1;
 %! initial_theta = zeros(n + 1, 1);
 %! options = optimset('GradObj', 'on', 'MaxIter', 400);
-%! [theta, cost] = fminunc(@(t)(costFunctionReg(t, X, y, 1)), initial_theta, options);
+%! [theta, cost] = fminunc(@(t)(costFunctionReg(t, X, y, lambda)), initial_theta, options);
 %! assert(theta, [-25.05233; 0.20536; 0.20059], 1e-4)
 %! assert(cost, 0.20391, 1e-4);
