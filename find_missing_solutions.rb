@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'find'
 scratch_files = Find.find(".").
   find_all { |fn| fn =~ /^\.\/[^\/]+\/[^\/]+\/scratch\.[^.]+$/ }.
