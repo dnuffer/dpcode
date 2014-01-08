@@ -14,6 +14,7 @@ test scratch
 %! y = data(:, 3);
 %! [m, n] = size(X);
 %! X = [ones(m, 1) X];
+%! initial_theta = zeros(n + 1, 1);
 %! TODO: call fminunc 
 %! assert(theta, [-25.161537; 0.206233; 0.201474], 1e-6);
 %! assert(cost, 0.203498, 1e-6);
