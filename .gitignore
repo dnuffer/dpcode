@@ -17,7 +17,7 @@
 *.la
 *.a
 
-scratch.r
+scratch.R
 scratch.rb
 scratch_spec.rb
 scratch.py
