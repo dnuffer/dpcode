@@ -29,16 +29,16 @@ require './array_sampler'
 class LangSelector
   def self.known_langs_and_weights
       {
-          "js"            => 6,
           "c++"           => 5,
-          "go"            => 4,
-          "java"          => 4,
+          "scala"         => 4,
           "ruby"          => 4,
-          "python"        => 3,
-          "c#"            => 1,
-          "octave"        => 3,
-          "R"             => 3,
-          "scala"         => 3,
+          "python"        => 4,
+          "octave"        => 4,
+          "R"             => 4,
+          "java"          => 3,
+          "go"            => 3,
+          "js"            => 2,
+          "c#"            => 2,
           # for now, just focus on establishing a base with the above languages, and then I'll add the others in one-by-one
           #"obj-c"         => 4,
           #"php"           => 3,
