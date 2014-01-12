@@ -13,7 +13,7 @@ while true; do
 		--name|-n ) NAME="$2"; shift 2;;
 		--help|-h ) SHOW_HELP="yes"; shift;;
 		-- ) shift; break;;
-		-*) echo "solution: error - unrecognized option $1" 1>&2; echo "Try \`solution --help' for more information" 1>&2; exit 1;;
+		-* ) echo "solution: error - unrecognized option $1" >&2; echo "Try \`solution --help' for more information." >&2; exit 1;;
 		* ) break;;
 	esac
 done
