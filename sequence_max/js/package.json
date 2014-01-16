@@ -1,0 +1,14 @@
+{
+  "name": "singly_linked_list_add_two_lists_forward",
+  "version": "1.0.0",
+  "author": "Dan Nuffer",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "underscore" : ">=1.5.2"
+  },
+  "devDependencies": {
+    "should" : ">=2.0.2",
+    "mocha" : ">=1.13.0"
+  },
+  "engine": "node >= 0.10.21"
+}
