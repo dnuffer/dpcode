@@ -72,5 +72,7 @@ TestResult.xml
 */*/CTestTestfile.cmake
 */*/Testing
 */*/cmake_install.cmake
+# java/maven/sbt output
+*/*/target
 
 *.Rcheck
