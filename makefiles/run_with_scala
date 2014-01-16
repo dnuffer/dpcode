@@ -1,4 +1,4 @@
 #!/bin/bash
 class=$1
 shift
-scala -classpath .:$(cat classpath) $(basename "$class" .class) "$@"
+scala -classpath .:$(cat classpath 2>/dev/null) $(basename "$class" .class) "$@"

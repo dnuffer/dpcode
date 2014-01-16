@@ -12,4 +12,4 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 include $(SELF_DIR)/Makefile-common.inc
 
 %.class : %.java
-	javac -classpath .:$(shell cat classpath) $<
+	javac -classpath .:$(shell cat classpath 2>/dev/null) $<
