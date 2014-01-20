@@ -1,0 +1,2 @@
+LDLIBS=-lboost_unit_test_framework
+CXX=g++-4.8
