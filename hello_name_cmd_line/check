@@ -4,10 +4,12 @@ set -e
 export PATH=.:$PATH
 
 # --name
+echo "Running: $* --name \"Dan\""
 out=$($* --name "Dan")
 [[ "$out" = "Hello, Dan" ]] || { printf "Failure\nExpected: Hello, Dan\nGot     : %s\n" "$out"; exit 1; }
 
 # -n
+echo "Running: $* -n \"Jiro\""
 out=$($* -n "Jiro")
 [[ "$out" = "Hello, Jiro" ]] || { printf "Failure\nExpected: Hello, Jiro\nGot     : %s\n" "$out"; exit 1; }
 
@@ -19,6 +21,7 @@ check_error()
 }
 
 # invalid arg
+echo "Running: $* --foo 2>&1"
 set +e
 out=$($* --foo 2>&1)
 rv=$?
@@ -26,6 +29,7 @@ check_error
 set -e
 
 # missing value
+echo "Running: $* --name 2>&1"
 set +e
 out=$($* --name 2>&1)
 rv=$?
@@ -33,6 +37,7 @@ check_error
 set -e
 
 # no args
+echo "Running: $* 2>&1"
 set +e
 out=$($* 2>&1)
 rv=$?
