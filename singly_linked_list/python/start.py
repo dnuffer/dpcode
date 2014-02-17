@@ -10,7 +10,11 @@ True
 20
 >>> l.next.next == None
 True
-
+>>> l.append(21)
+>>> l.next.next.data
+21
+>>> l.next.next.next == None
+True
 """
 
 # TODO: Implement a singly-linked list with next, data, and append()
