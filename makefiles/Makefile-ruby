@@ -1,6 +1,6 @@
 SRC_EXT=.rb
 BIN_EXT=.rb
-RUN_CMD=rvm 2.0.0 do bundle exec ruby
+RUN_CMD=rvm 2.1 do bundle exec ruby
 
 # Makefile code to find and load the common exercise rules
 MAKEFILE := $(lastword $(MAKEFILE_LIST))
@@ -14,7 +14,7 @@ ifneq ($(wildcard Gemfile),)
 setup: bundle.installed
 
 bundle.installed: Gemfile
-	rvm 2.0.0 do bundle install
+	rvm 2.1 do bundle install
 	touch bundle.installed
 
 endif
