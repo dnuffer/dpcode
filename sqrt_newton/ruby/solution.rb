@@ -1,4 +1,3 @@
-
 if __FILE__ == $1
   exit 1 unless system "rspec #{__FILE__}"
 end
