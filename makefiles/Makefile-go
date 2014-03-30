@@ -9,4 +9,4 @@ SELF_DIR := $(dir $(REAL_MAKEFILE))
 include $(SELF_DIR)Makefile-common.inc
 
 % : %.go
-	$(SELF_DIR)go_env 1.1.2 go build $<
+	$(SELF_DIR)go_env 1.2.1 go build $<
