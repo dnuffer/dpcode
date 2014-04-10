@@ -1,0 +1,2 @@
+library(ISLR)
+data(Hitters)
