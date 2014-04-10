@@ -7,6 +7,7 @@ function p = predict(theta, X)
 
 end
 
+test scratch
 %!test
 %! t = [  -25.16154; 0.20623; 0.20147];
 %! assert(predict(t, [1.0 45 85]), 1.0, 1e-2);
