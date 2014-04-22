@@ -7,6 +7,6 @@ Hitters$Salary = log(Hitters$Salary)
 Hitters.train = Hitters[1:200,]
 Hitters.test = Hitters[201:nrow(Hitters),]
 
-Hitters.gbm = train(Salary~., data=Hitters.train, method="gbm", trControl=trainControl(method="repeatedcv", repeats=10), tuneLength=10)
+Hitters.gbm = train(Salary~., data=Hitters.train, method="gbm", trControl=trainControl(method="repeatedcv", repeats=3), tuneLength=3)
 
 varImp(Hitters.gbm)

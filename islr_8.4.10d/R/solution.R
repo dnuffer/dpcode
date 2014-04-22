@@ -9,3 +9,5 @@ Hitters.test = Hitters[201:nrow(Hitters),]
 
 Hitters.gbm = train(Salary~., data=Hitters.train, method="gbm", trControl=trainControl(method="repeatedcv", repeats=3), tuneLength=3)
 
+plot(Hitters.gbm)
+plot(Hitters.gbm$finalModel)
