@@ -1,0 +1,21 @@
+We need to create the thumbnails.js file, and add a JavaScript
+function to set up the initial event handlers for each thumbnail image in
+the inventory. Let’s call that function initPage(), and set it to run
+as soon as the user’s window loads the inventory page.
+
+To set up the onclick behavior for the thumbnails,
+the initPage() function has to do two things:
+
+1. Find the thumbnails on the page
+The thumbnails are contained in a div called “thumbnailPane,” so we can find that
+div, and then find each image within it.
+
+2. Build the onclick event handler for each thumbnail
+Each item’s full-size image is named with the title of the thumbnail image
+plus “-detail”. For example, the detail image for the thumbnail with the title
+FenderGuitar is FenderGuitar-detail.png. That lets us work out the
+name of the image in our JavaScript.
+The event handler for each thumbnail should set the src tag for the detail image (the
+one with an id of “itemDetail”) to the detail image (for example, FenderGuitar-
+detail.png). Once you’ve done that, the browser will automatically display the
+new image using the name you supplied.
