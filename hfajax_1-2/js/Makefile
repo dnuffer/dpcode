@@ -1,8 +1,8 @@
 run:
 
 edit:
-	if ! [ -e scratch ]; then cp start scratch; fi
-	$${EDITOR:-vim} scratch/introduction.html
+	if ! [ -e scratch ]; then cp -r start scratch; fi
+	$${EDITOR:-vim} scratch/scripts/thumbnails.js
 
 check:
 	diff --ignore-all-space -N -u -r solution scratch 

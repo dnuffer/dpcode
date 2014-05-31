@@ -1,7 +1,7 @@
 run:
 
 edit:
-	if ! [ -e scratch ]; then cp start scratch; fi
+	if ! [ -e scratch ]; then cp -r start scratch; fi
 	$${EDITOR:-vim} scratch/introduction.html
 
 check:
