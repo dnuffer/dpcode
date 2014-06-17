@@ -1,0 +1,4 @@
+Modify the XHTML web page
+We need to include the JavaScript file we’re going to write and
+add some divs and ids, so our JavaScript can find and work
+with different parts of the web page.
