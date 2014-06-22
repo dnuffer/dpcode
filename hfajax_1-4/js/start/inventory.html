@@ -1,9 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
 <head>
   <title>Rob's Rock 'n' Roll Memorabilia</title>
   <link rel="stylesheet" href="css/default.css" />
+  <script src="scripts/thumbnails.js"></script>
 </head>
 
 <body>
@@ -21,6 +20,7 @@
       <p><strong>Click on an image to the left for more details.</strong></p>
     </div>
 
+    <div id="thumbnailPane">
       <img src="images/itemGuitar.jpg" width="301" height="105" alt="guitar" 
            title="itemGuitar" id="itemGuitar" />
       <img src="images/itemShades.jpg" alt="sunglasses" width="301" height="88" 
@@ -29,9 +29,11 @@
            title="itemCowbell" id="itemCowbell" />
       <img src="images/itemHat.jpg" alt="hat" width="300" height="152" 
            title="itemHat" id="itemHat" />
+    </div>
 
     <div id="detailsPane">
       <img src="images/blank-detail.jpg" width="346" height="153" id="itemDetail" />
+      <div id="description"></div>
     </div>
   </div>
 </body>

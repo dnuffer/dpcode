@@ -7,7 +7,7 @@ function initPage() {
   // set the handler for each image
   for (var i = 0; i < thumbs.length; i++) {
     image = thumbs[i];
-    
+
     // create the onclick function
     image.onclick = function() {
       // find the image name
@@ -32,6 +32,7 @@ function createRequest() {
       }
     }
   }
+
   return request;
 }
 
@@ -41,12 +42,11 @@ function getDetails(itemName) {
     alert("Unable to create request");
     return;
   }
-  var url= "getDetails.php?ImageID=" + escape(itemName);
+  var url = "getDetails.php?ImageID=" + escape(itemName);
   request.open("GET", url, true);
   request.onreadystatechange = displayDetails;
   request.send(null);
 }
-
 
 function displayDetails() {
   if (request.readyState == 4) {
@@ -56,4 +56,3 @@ function displayDetails() {
     }
   }
 }
-
