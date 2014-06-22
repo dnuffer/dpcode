@@ -22,3 +22,7 @@ RMSE(predict(Hitters.pls, newdata=Hitters.test), Hitters.test$Salary)
 Hitters.rs = resamples(list(gbm = Hitters.gbm, lm = Hitters.lm, pls = Hitters.pls))
 Hitters.rs
 bwplot(Hitters.rs)
+diffs = diff(Hitters.rs)
+diffs
+summary(diffs)
+bwplot(diffs)
