@@ -2,6 +2,16 @@ sigmoid = function(z) {
   return(1/(1+exp(-z)))
 }
 
+cost.function = function(theta, X, y) {
+  m = nrow(y)
+  J = (-1 / m) * (t(log(sigmoid(X %*% theta))) %*% y +
+                  t(log(1 - sigmoid(X %*% theta))) %*% (1 - y))
+
+  # TODO: assign grad
+  grad = 
+
+  return(list(J=J[1,1], grad=grad))
+}
 
 library(testthat)
 
