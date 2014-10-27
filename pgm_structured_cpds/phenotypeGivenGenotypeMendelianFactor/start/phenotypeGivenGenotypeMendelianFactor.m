@@ -45,3 +45,15 @@ phenotypeFactor.val = zeros(1, prod(phenotypeFactor.card));
 % Replace the zeros in phentoypeFactor.val with the correct values.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+test phenotypeGivenGenotypeMendelianFactor
+
+%!test
+%! isDominant = 1;
+%! genotypeVar = 1;
+%! phenotypeVar = 3;
+%! phenotypeFactor = phenotypeGivenGenotypeMendelianFactor(isDominant, genotypeVar, phenotypeVar);
+%! assert(phenotypeFactor, struct('var', [3,1], 'card', [2,3], 'val', [1,0,1,0,0,1]));
+%! isDominant = 0;
+%! phenotypeFactor = phenotypeGivenGenotypeMendelianFactor(isDominant, genotypeVar, phenotypeVar);
+%! assert(phenotypeFactor, struct('var', [3,1], 'card', [2,3], 'val', [0,1,0,1,1,0]));

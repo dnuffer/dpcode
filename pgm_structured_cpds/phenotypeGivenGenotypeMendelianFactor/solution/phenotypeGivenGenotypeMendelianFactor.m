@@ -45,11 +45,12 @@ phenotypeFactor.card = [2, 3];
 
 phenotypeFactor.val = zeros(1, prod(phenotypeFactor.card));
 % Replace the zeros in phentoypeFactor.val with the correct values.
-if isDominant
-  phenotypeFactor.val = [1 0 1 0 0 1];
-else
-  phenotypeFactor.val = [0 1 0 1 1 0];
-end
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [1, 1], isDominant);
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [2, 2], !isDominant);
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [1, 3], !isDominant);
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [2, 1], !isDominant);
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [1, 2], isDominant);
+phenotypeFactor = SetValueOfAssignment(phenotypeFactor, [2, 3], isDominant);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %PhenotypeVar | GenotypeVar | P(Phenotype|Genotype) with isDominant = 1 | P(Phenotype|Genotype) with isDominant = 0 |
@@ -60,3 +61,14 @@ end
 %       1 (A) |      3 (aa) |                     0                     |                     1                     |
 %       2 (a) |      3 (aa) |                     1                     |                     0                     |
 
+test phenotypeGivenGenotypeMendelianFactor
+
+%!test
+%! isDominant = 1;
+%! genotypeVar = 1;
+%! phenotypeVar = 3;
+%! phenotypeFactor = phenotypeGivenGenotypeMendelianFactor(isDominant, genotypeVar, phenotypeVar);
+%! assert(phenotypeFactor, struct('var', [3,1], 'card', [2,3], 'val', [1,0,1,0,0,1]));
+%! isDominant = 0;
+%! phenotypeFactor = phenotypeGivenGenotypeMendelianFactor(isDominant, genotypeVar, phenotypeVar);
+%! assert(phenotypeFactor, struct('var', [3,1], 'card', [2,3], 'val', [0,1,0,1,1,0]));
