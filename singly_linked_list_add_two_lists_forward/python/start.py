@@ -1,3 +1,30 @@
+"""
+>>> sll1 = singly_linked_list([1])
+>>> sll2 = singly_linked_list([2])
+>>> print add_lists(sll1, sll2)
+[3]
+>>> sll1 = singly_linked_list([1, 2])
+>>> sll2 = singly_linked_list([3, 4])
+>>> print add_lists(sll1, sll2)
+[4 -> 6]
+>>> sll1 = singly_linked_list([6, 1, 7])
+>>> sll2 = singly_linked_list([2, 9, 5])
+>>> print add_lists(sll1, sll2)
+[9 -> 1 -> 2]
+>>> sll1 = singly_linked_list([4, 6, 1, 7])
+>>> sll2 = singly_linked_list([2, 9, 5])
+>>> print add_lists(sll1, sll2)
+[4 -> 9 -> 1 -> 2]
+>>> sll1 = singly_linked_list([6, 1, 7])
+>>> sll2 = singly_linked_list([4, 2, 9, 5])
+>>> print add_lists(sll1, sll2)
+[4 -> 9 -> 1 -> 2]
+>>> sll1 = singly_linked_list([6, 1, 7])
+>>> sll2 = singly_linked_list([6, 9, 5])
+>>> print add_lists(sll1, sll2)
+[1 -> 3 -> 1 -> 2]
+"""
+
 from singly_linked_list import singly_linked_list, singly_linked_list_node
 
 # TODO: You have two numbers represented by a linked list, where each node
