@@ -17,18 +17,17 @@ False
 False
 """
 
-def add_str_count_to_dict(d, s):
-  if s in d:
-    d[s] += 1
-  else:
-    d[s] = 0
-  return d
+def char_counts(s):
+  res = {}
+  for c in s:
+    if c in res:
+      res[c] += 1
+    else:
+      res[c] = 0
+  return res
 
-def get_char_counts(s):
-  return reduce(add_str_count_to_dict, s, dict())
-
-def are_permutations(s1, s2):
-  return get_char_counts(s1) == get_char_counts(s2)
+def are_permutations(x, y):
+  return char_counts(x) == char_counts(y)
 
 
 if __name__ == '__main__':
