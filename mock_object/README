@@ -12,7 +12,6 @@ groovy - http://groovy.codehaus.org/gapi/groovy/mock/interceptor/MockFor.html
 lisp - unnecessary
 lua - http://luaforge.net/projects/lemock/
 obj-c - http://ocmock.org/
-octave - not found
 perl - http://stackoverflow.com/questions/1519082/what-are-the-good-frameworks-for-unit-testing-and-mock-objects-in-perl, http://search.cpan.org/~chromatic/Test-MockObject-1.20120301/lib/Test/MockObject.pm
 php - https://github.com/padraic/mockery
 python - mock objects in library or https://pypi.python.org/pypi/ludibrio/2.0

@@ -1,7 +1,0 @@
-{
-  name="regularized_logistic_regression_fminunc",
-  type_machine_learning=true,
-  type_api_usage=true,
-  type_optimization=true,
-  one_language="octave"
-}

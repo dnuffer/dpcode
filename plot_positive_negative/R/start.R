@@ -1,4 +1,4 @@
-data = read.table("../octave/ex2data1.txt", sep=",")
+data = read.table("ex2data1.txt", sep=",")
 X = data[,1:2]
 y = data[,3]
 
