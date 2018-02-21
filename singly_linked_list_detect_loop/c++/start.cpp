@@ -9,7 +9,7 @@ struct node
 	node_ptr next;
 };
 
-// TOOD: write detect_loop
+// TODO: write detect_loop
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE solution
